@@ -2,8 +2,8 @@
 {
     public class Attachment
     {
-        public int Id { get; set; }
-        public int TransactionId { get; set; }
+        public string AttachmentId { get; set; } = string.Empty;
+        public string TransactionId { get; set; } = string.Empty;
         public string FilePath { get; set; } = String.Empty;
         public DateTime UploadedAt { get; set; } = DateTime.Now;
 
