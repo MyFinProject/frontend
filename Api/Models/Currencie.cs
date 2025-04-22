@@ -2,7 +2,7 @@
 {
     public class Currencie
     {
-        public int Id { get; set; }
+        public string CurrencieId { get; set; } = string.Empty;
         public string Code { get; set; } = string.Empty;
         public decimal Rate { get; set; }
         public DateTime UpdateAt { get; set; } = DateTime.Now;

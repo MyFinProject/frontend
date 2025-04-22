@@ -3,13 +3,13 @@ namespace Api.Models
 {
     public class UserWallets
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
+        public string WalletId { get; set; } = string.Empty;
+        public String UserId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public double Balance { get; set; }
-        public int CurrencieId { get; set; }
+        public string CurrencieId { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
-        public User? User { get; set; }
+        public AppUser? AppUser { get; set; }
         public Currencie? Currencie { get; set; }
     }
 }
