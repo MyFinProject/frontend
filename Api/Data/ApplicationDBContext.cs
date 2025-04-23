@@ -1,4 +1,5 @@
 ﻿using Api.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,8 @@ namespace Api.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<AppUser>().HasKey(u => u.Id);
             modelBuilder.Entity<Budget>().HasKey(u => u.BudgetId);
             modelBuilder.Entity<Transaction>().HasKey(u => u.TransactionId);
@@ -53,7 +56,7 @@ namespace Api.Data
             modelBuilder.Entity<Transaction>()
                 .HasOne(a => a.AppUser)
                 .WithMany(u => u.Transactions)
-                .HasForeignKey(a => a.TransactionId);
+                .HasForeignKey(a => a.UserId);
             modelBuilder.Entity<Transaction>()
                 .HasOne(a => a.Currencie)
                 .WithMany(u => u.Transactions)
@@ -64,7 +67,20 @@ namespace Api.Data
                 .WithMany(u => u.Attachments)
                 .HasForeignKey(a => a.TransactionId);
 
-            base.OnModelCreating(modelBuilder);
+            List<IdentityRole> roles = new List<IdentityRole>()
+            {
+                new IdentityRole
+                {
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+                new IdentityRole
+                {
+                    Name = "User",
+                    NormalizedName = "USER"
+                },
+            };
+            modelBuilder.Entity<IdentityRole>().HasData(roles);
         }
     }
 }

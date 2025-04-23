@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250422173054_Init")]
-    partial class Init
+    [Migration("20250423073341_SeedRole")]
+    partial class SeedRole
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -222,6 +222,8 @@ namespace Api.Migrations
 
                     b.HasIndex("CurrencieId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Transactions");
                 });
 
@@ -279,6 +281,20 @@ namespace Api.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "eb688785-a1bc-4498-ada9-08868e2ae1e5",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "a6a0aa58-1ca9-4fb0-9f7c-cfb345ea117f",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -441,7 +457,7 @@ namespace Api.Migrations
 
                     b.HasOne("Api.Models.AppUser", "AppUser")
                         .WithMany("Transactions")
-                        .HasForeignKey("TransactionId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
