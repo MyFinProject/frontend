@@ -16,7 +16,7 @@ import transfer from './components/transfer.vue';
   min-height: 95vh;
   margin: 1% auto;
   padding: 30px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   border-radius: 50px;
   border: 3px solid white;
