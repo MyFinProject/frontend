@@ -31,7 +31,7 @@
 <style scoped>
 
 .top-row {
-  margin-top: 10%;
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   gap: 5%;
