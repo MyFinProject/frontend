@@ -1,11 +1,11 @@
 <script setup>
-import balance from '../components/balance_and_card.vue';
+import top_menu from '../components/top_menu_main_page.vue';
 
 </script>
 
 <template>
     <div class="mybody">
-      <balance />
+      <top_menu />
     </div>
   </template>
 
