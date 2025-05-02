@@ -1,11 +1,11 @@
 <script setup>
-import transfer from '../components/transfer.vue';
+import top_menu from '../components/top_menu_history.vue';
 
 </script>
 
 <template>
     <div class="mybody">
-      <transfer />
+      <top_menu />
     </div>
   </template>
 
