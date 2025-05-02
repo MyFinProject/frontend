@@ -1,0 +1,10 @@
+.credit-card{
+    position: relative;
+    overflow: hidden; 
+
+    width: 480px;
+    height: 180px;
+
+    border-radius: 10px;
+    background-color: rgb(41, 58, 43);
+}

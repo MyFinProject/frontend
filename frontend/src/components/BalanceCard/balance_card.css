@@ -1,0 +1,107 @@
+/* ===== Variables ===== */
+:root {
+    --balance-card-width: 480px;
+    --balance-card-height: 180px;
+    --orange-blur-color: rgba(255, 165, 0, 0.9);
+    --text-primary: #3a3a3a;
+    --text-secondary: #666;
+}
+
+
+/* ===== Basic Card Styles ===== */
+.top-row {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+}
+
+.balance-card  {
+    position: relative;
+    overflow: hidden; 
+
+    width: var(--balance-card-width);
+    height: var(--balance-card-height);
+    
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Effects ===== */
+.balance-card__orange-blur{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--orange-blur-color);
+    border-radius: 50%;
+    filter: blur(25px);
+    right: 10%;
+    margin-top: 50px;
+    z-index: 0;
+}
+
+/* ===== Img & Svg ===== */
+.balance-card__dollar-icon {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: 5px;
+    top: 5px;
+    z-index: 1;
+}
+
+.balance-card__dollar_sign {
+    position: absolute;
+    width: 18px;
+    height: 18px;  
+    left: 15px;
+    top: 65px;
+    z-index: 1;
+}
+
+/* ===== Stats Row ===== */
+.balance-card__stats-row {
+    padding-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    gap: 70px;
+}
+
+.balance-card__stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.balance-card__income-value, .balance-card__expand-value {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.balance-card__income-title, .balance-card__expand-title{
+    position: absolute;
+    font-size: 14px;
+    color:  var(--text-secondary);
+    bottom: 10px;
+}
+
+/* ===== Other ===== */
+.balance-card-content {
+    margin-top: 15px;
+}
+
+.balance-card__title {
+    display: block;
+    padding-left: 35px;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.balance-card__value {
+    margin-left: 30px;
+    font-weight: bold;
+    font-size: 48px;
+    color: var(--text-primary);
+}

@@ -1,7 +1,7 @@
 
 <script setup>
 import top_menu from '../components/top_menu_pers_account.vue';
-import balance from '../components/balance_and_card.vue';
+import balance from '../components/BalanceCard/balance_card.vue';
 import transfer from '../components/transfer.vue';
 </script>
 
