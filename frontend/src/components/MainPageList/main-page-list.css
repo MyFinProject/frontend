@@ -1,6 +1,7 @@
 .ImageMainList{
     right: 5px;
     z-index: 1;
+    margin-bottom: -30px;
 }
 
 .Heading{

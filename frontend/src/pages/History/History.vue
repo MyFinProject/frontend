@@ -1,10 +1,12 @@
 <script setup>
 import top_menu from '../../components/TopMenuHistory/top-menu-history.vue';
+import body_history from '../../components/BodyHistory/BodyHistory.vue';
 </script>
 
 <template>
     <div class="mybody">
       <top_menu />
+      <body_history/>
     </div>
 </template>
 

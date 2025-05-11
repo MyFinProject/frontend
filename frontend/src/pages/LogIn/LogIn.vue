@@ -1,10 +1,10 @@
+<script setup>
+import LogInField from '../../components/LogInField/LogInField.vue';
+</script>
 
 <template>
     <div class = 'mybody'>
-        <div class = 'log_background' >
-            <button class="button_back" @click="$router.push('/')">на главную</button>
-            <button class="button_persona_account" @click="$router.push('/PersonalAccount')">лк</button>
-        </div>
+        <LogInField/>
     </div>
 </template>
 

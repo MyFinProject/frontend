@@ -48,7 +48,7 @@
   cursor: pointer;
 }
 
-.registration-end{
+.log-in-end{
   border-radius: 10px;
   border: 2px solid rgb(215, 222, 221);
   margin: 0% auto;
@@ -63,7 +63,7 @@
   justify-content: center; 
   gap: 15px;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   margin: 0 auto;
 }
 
@@ -74,7 +74,7 @@
   font-weight: bold;
 }
 
-.log-in-button{
+.registration-button{
    border-radius: 10px;
   border: 2px solid rgb(215, 222, 221);
   margin: 0% auto;
@@ -82,10 +82,4 @@
   font-size: 18px;
   font-weight: bold;
   color: rgb(215, 222, 221);
-}
-
-.error-message {
-    color: rgb(215, 222, 221);
-    font-size: 20px;
-    margin: 0% auto;
 }

@@ -59,6 +59,6 @@
 
 
 <style>
-  @import './balance_card.css';
+  @import './balance-card.css';
 </style>
 
