@@ -1,0 +1,19 @@
+.ImageMainList{
+    right: 5px;
+    z-index: 1;
+}
+
+.Heading{
+    color: white;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.Description{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
