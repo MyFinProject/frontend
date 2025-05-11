@@ -3,23 +3,23 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory} from 'vue-router'
 
-import personal_account from './pages/personal_account.vue'
-import main_page from './pages/main_page.vue'
-import history from './pages/history.vue'
-import log_in from './pages/log_in.vue'
-import log_out from './pages/log_out.vue'
-import registration from './pages/registration.vue'
+import personal_account from './pages/PersonalAccount/PersonalAccount.vue'
+import main_page from './pages/MainPage/MainPage.vue'
+import history from './pages/History/History.vue'
+import log_in from './pages/LogIn/LogIn.vue'
+import log_out from './pages/LogOut/LogOut.vue'
+import registration from './pages/Registration/Registration.vue'
 import App from './App.vue'
 
 const app = createApp(App)
 
 const routes = [
-    {path: '/personal_account', name: 'personal account', component: personal_account},
-    {path: '/', name: 'main page', component: main_page},
-    {path: '/history', name: 'history', component: history},
-    {path: '/log_in', name: 'log_in', component: log_in},
-    {path: '/log_out', name: 'log_out', component: log_out},
-    {path: '/registration', name: 'registration', component: registration}
+    {path: '/PersonalAccount', name: 'Personal account', component: personal_account},
+    {path: '/', name: 'Main page', component: main_page},
+    {path: '/History', name: 'History', component: history},
+    {path: '/LogIn', name: 'Log In', component: log_in},
+    {path: '/LogOut', name: 'Log Out', component: log_out},
+    {path: '/Registration', name: 'Registration', component: registration}
 ]
 
 const router = createRouter({
