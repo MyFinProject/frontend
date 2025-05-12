@@ -1,0 +1,66 @@
+.back-button{
+  border-radius: 10px;
+  border: 2px solid rgb(215, 222, 221);
+  position: absolute;
+  top: 30px;
+  right:30px;
+  padding: 8px 16px;
+  color: rgb(215, 222, 221);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.MyFin{
+  position: absolute;
+  top: 30px;
+  left:30px;
+  padding: 8px 16px;
+  color: rgb(215, 222, 221);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.background{
+  margin: 15%;
+  border-radius: 10px;
+  border: 2px solid rgb(215, 222, 221);
+  min-height: 200px;
+}
+
+.question{
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(215, 222, 221);
+}
+
+.background-button{
+    margin: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.yes-button{
+  border-radius: 10px;
+  border: 2px solid rgb(215, 222, 221);
+  padding: 8px 22px;
+  color: rgb(215, 222, 221);
+  min-width: 40px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.no-button{
+  border-radius: 10px;
+  margin-left: 50%;
+  border: 2px solid rgb(215, 222, 221);
+  padding: 8px 16px;
+  color: rgb(215, 222, 221);
+  min-width: 40px;
+  font-size: 30px;
+  font-weight: bold;
+}
