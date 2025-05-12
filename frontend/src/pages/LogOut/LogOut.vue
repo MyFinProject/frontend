@@ -1,9 +1,11 @@
 
+<script setup>
+import log_out from '../../components/LogOut/LogOut.vue';
+</script>
+
 <template>
     <div class = 'mybody'>
-        <div class = 'log_background' >
-            <button class="button_back" @click="$router.push('/')">на главную</button>
-        </div>
+        <log_out/>
     </div>
 </template>
 
