@@ -16,6 +16,7 @@
   font-size: 25px;
   border-radius: 5px;
   padding: 5px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .input-row-label {
@@ -39,6 +40,7 @@
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .log-in-end{
@@ -49,6 +51,7 @@
   font-size: 25px;
   font-weight: bold;
   color: rgb(215, 222, 221);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .centered-row {
@@ -58,6 +61,7 @@
   width: 100%;
   max-width: 450px;
   margin: 0 auto;
+
 }
 
 .question{
@@ -75,4 +79,5 @@
   font-size: 18px;
   font-weight: bold;
   color: rgb(215, 222, 221);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }

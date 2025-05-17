@@ -3,16 +3,22 @@
   height: auto;
   background-color: rgb(215, 222, 221);
   border-radius: 10px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .input-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  width: 100%;
   padding: 8px 20px;
   color: rgb(58, 58, 58);
   font-size: 20px;
+}
+
+.goal-container{
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .button-add{
@@ -25,6 +31,8 @@
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .remove-button {
@@ -32,9 +40,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-right: 10px;
   font-size: 16px;
   line-height: 1;
 }

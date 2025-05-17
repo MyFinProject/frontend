@@ -9,6 +9,7 @@
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .MyFin{
@@ -26,6 +27,7 @@
   border-radius: 10px;
   border: 2px solid rgb(215, 222, 221);
   min-height: 200px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .question{
@@ -52,6 +54,7 @@
   min-width: 40px;
   font-size: 30px;
   font-weight: bold;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .no-button{
@@ -63,4 +66,5 @@
   min-width: 40px;
   font-size: 30px;
   font-weight: bold;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }

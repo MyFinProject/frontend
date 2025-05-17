@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .right-buttons {
@@ -23,6 +24,7 @@
   font-weight: bold;
   padding: 0 15px;
   color: rgb(215, 222, 221);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .history {
@@ -35,6 +37,7 @@
   font-weight: bold;
   padding: 0 15px;
   color: rgb(215, 222, 221);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
