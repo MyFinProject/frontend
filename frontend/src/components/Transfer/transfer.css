@@ -18,6 +18,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  border-radius: 5px;
   gap: 10px;
 }
 
@@ -56,4 +57,5 @@
   color: rgb(58, 58, 58);
   font-size: 20px;
   font-weight: bold;
+  padding-left: 10px;
 }
