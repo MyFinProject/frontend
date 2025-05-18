@@ -46,7 +46,7 @@
   font-weight: bold;
 }
 
-.registration-button, .back-button {
+.log-sing-in-button, .back-button {
   font-weight: bold;
   color: rgb(215, 222, 221);
   border: 2px solid rgb(215, 222, 221);
@@ -55,7 +55,7 @@
   transition: all 0.3s ease;
 }
 
-.registration-button {
+.log-sing-in-button {
   margin: 0% auto;
   padding: 10px;
   font-size: 18px;
@@ -69,7 +69,7 @@
   font-size: 20px;
 }
 
-.back-button:hover, .registration-button:hover {
+.back-button:hover, .log-sing-in-button:hover {
   color: #ffffff;
   cursor: pointer;
   transform: translateY(-2px);

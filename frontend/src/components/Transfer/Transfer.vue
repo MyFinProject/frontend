@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      items: [{ value: '' }] //начальное значение строки
+      items: [{ value: '' }] 
     }
   },
   methods: {
