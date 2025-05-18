@@ -1,9 +1,9 @@
 <template>
-    <div class="top_menu">
+    <div class="top-menu">
       <button class="logo" @click="$router.push('/')">MyFin</button>
       <div class="right-buttons">
-        <button class="registration_button" @click="$router.push('/Registration')">зарегистрироваться</button>
-        <button class="log_in_button" @click="$router.push('/LogIn')">Log in</button>
+        <button class="SingIn-button" @click="$router.push('/SingIn')">зарегистрироваться</button>
+        <button class="log-in-button" @click="$router.push('/LogIn')">Log in</button>
       </div>
     </div>  
   </template>

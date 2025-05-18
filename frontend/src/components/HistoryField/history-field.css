@@ -27,12 +27,12 @@
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-.expenses_value{    
+.expenses-value{    
     padding: 15px;
     color: rgb(50, 50, 50);
 }
 
-.income_value{
+.income-value{
     padding: 20px;
     color:rgb(26, 179, 59);
 }

@@ -1,8 +1,5 @@
-<script setup>
-</script>
-
 <template>
-  <div class="mybody">
+  <div>
     <router-view></router-view>
   </div>
 </template>

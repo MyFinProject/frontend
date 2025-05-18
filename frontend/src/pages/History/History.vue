@@ -1,14 +1,14 @@
 <script setup>
-import top_menu from '../../components/TopMenuHistory/top-menu-history.vue';
-import body_history from '../../components/BodyHistory/BodyHistory.vue';
-import history_field from '../../components/HistoryField/HistoryField.vue';
+import TopMenu from '../../components/TopMenuHistory/top-menu-history.vue';
+import BodyHistory from '../../components/BodyHistory/BodyHistory.vue';
+import HistoryField from '../../components/HistoryField/HistoryField.vue';
 </script>
 
 <template>
     <div class="mybody">
-      <top_menu />
-      <body_history/>
-      <history_field/>
+      <TopMenu />
+      <BodyHistory/>
+      <HistoryField/>
     </div>
 </template>
 

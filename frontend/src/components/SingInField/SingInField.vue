@@ -63,5 +63,5 @@ export default {
 </script>
 
 <style scoped>
-@import './registration-field.css';
+@import './sing-in-field.css';
 </style>

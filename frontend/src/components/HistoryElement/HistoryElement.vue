@@ -13,7 +13,8 @@ defineProps({
     category: String,
     date: String,
     value: Number
-})
+}
+)
 </script>
 
 <style>

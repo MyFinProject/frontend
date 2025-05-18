@@ -6,7 +6,7 @@
         <div class="income-expense-row">
             <div class="income-expense-details">
                 <div>
-                    <span class="expenses_value">{{ expenses }} $</span>
+                    <span class="expenses-value">{{ expenses }} $</span>
                 </div>
                 <div>
                     <span> - Расходы </span>
@@ -14,7 +14,7 @@
             </div>
             <div class="income-expense-details">
                 <div>
-                    <span class="income_value">{{ income }} $</span>
+                    <span class="income-value">{{ income }} $</span>
                 </div>
                 <div>
                     <span> + Доходы </span>
