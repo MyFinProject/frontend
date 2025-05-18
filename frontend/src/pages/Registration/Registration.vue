@@ -1,6 +1,6 @@
 
 <script setup>
-import registration_field from '../../components/RegistrationField/RegistrationField.vue';
+import registration_field from '../../components/RegistrationField/registration-field.vue';
 </script>
 
 <template>

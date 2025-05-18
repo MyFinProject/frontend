@@ -3,12 +3,12 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory} from 'vue-router'
 
-import personal_account from './pages/PersonalAccount/PersonalAccount.vue'
-import main_page from './pages/MainPage/MainPage.vue'
-import history from './pages/History/History.vue'
-import log_in from './pages/LogIn/LogIn.vue'
-import log_out from './pages/LogOut/LogOut.vue'
-import registration from './pages/Registration/Registration.vue'
+import personal_account from './pages/PersonalAccount/personal-account.vue'
+import main_page from './pages/MainPage/main-page.vue'
+import history from './pages/History/history.vue'
+import log_in from './pages/LogIn/log-in.vue'
+import log_out from './pages/LogOut/log-out.vue'
+import registration from './pages/Registration/registration.vue'
 import App from './App.vue'
 
 const app = createApp(App)

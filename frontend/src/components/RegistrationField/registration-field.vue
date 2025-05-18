@@ -1,12 +1,12 @@
 <template>
-    <button class="back-button" @click="$router.push('/')">назад</button>
+    <button class="back-button" @click="$router.push('/')">Назад</button>
     <span class="MyFin">MyFin</span>
     <span class="input-row-label">Регистрация</span>
     <input v-model="username" class="input-row" type="text" placeholder="Введите имя пользователя">
     <input v-model="email" class="input-row" type="text" placeholder="Введите почту">
     <div v-if="passwordError" class="error-message">{{ passwordError }}</div>
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
-    <button class="registration-end" @click="register">завершить регистрацию</button>
+    <button class="registration-end" @click="register">Завершить регистрацию</button>
     <div class="centered-row">
         <span class="question">Есть аккаунт? →</span>
         <button class="log-in-button" @click="$router.push('/LogIn')">Войти</button>
@@ -63,5 +63,5 @@ export default {
 </script>
 
 <style scoped>
-@import './registration-field.css';
+    @import './registration-field.css';
 </style>

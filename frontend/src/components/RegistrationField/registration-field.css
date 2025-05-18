@@ -1,4 +1,4 @@
-.MyFin{
+.MyFin {
   position: absolute;
   top: 30px;
   left:30px;
@@ -6,6 +6,7 @@
   color: rgb(215, 222, 221);
   font-size: 30px;
   font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .input-row {
@@ -29,31 +30,6 @@
   color: rgb(215, 222, 221);
 }
 
-.back-button{
-  border-radius: 10px;
-  border: 2px solid rgb(215, 222, 221);
-  position: absolute;
-  top: 30px;
-  right:30px;
-  padding: 8px 16px;
-  color: rgb(215, 222, 221);
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.registration-end{
-  border-radius: 10px;
-  border: 2px solid rgb(215, 222, 221);
-  margin: 0% auto;
-  padding: 10px;
-  font-size: 25px;
-  font-weight: bold;
-  color: rgb(215, 222, 221);
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
 .centered-row {
   display: flex;
   justify-content: center; 
@@ -70,19 +46,51 @@
   font-weight: bold;
 }
 
-.log-in-button{
-   border-radius: 10px;
+.log-in-button, .back-button, .registration-end{
+  border-radius: 10px;
   border: 2px solid rgb(215, 222, 221);
+  color: rgb(215, 222, 221);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.log-in-button{
   margin: 0% auto;
   padding: 10px;
   font-size: 18px;
-  font-weight: bold;
-  color: rgb(215, 222, 221);
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button{
+  position: absolute;
+  top: 30px;
+  right:30px;
+  padding: 8px 16px;
+  font-size: 20px;
+}
+
+.registration-end{
+  margin: 0% auto;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.log-in-button:hover, .back-button:hover, .registration-end:hover{
+  color: #ffffff;
+  cursor: pointer;
+  transform: translateY(-2px);
+  background-color: rgba(215, 222, 221, 0.1);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.MyFin:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(215, 222, 221, 0.5);
+  cursor: pointer;
 }
 
 .error-message {
-    color: rgb(215, 222, 221);
-    font-size: 20px;
-    margin: 0% auto;
+  color: rgb(215, 222, 221);
+  font-size: 20px;
+  margin: 0% auto;
 }

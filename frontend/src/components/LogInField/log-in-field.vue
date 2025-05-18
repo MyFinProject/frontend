@@ -1,5 +1,5 @@
 <template>
-    <button class="back-button" @click="$router.push('/')">назад</button>
+    <button class="back-button" @click="$router.push('/')">Назад</button>
     <span class="MyFin">MyFin</span>
     <span class="input-row-label">Вход</span>
     <input v-model="username" class="input-row" type="text" placeholder="Введите имя пользователя">
@@ -8,7 +8,7 @@
     <button class="registration-button" @click="$router.push('/PersonalAccount')">Войти</button>
     <div class="centered-row">
         <span class="question">Нет аккаунта? →</span>
-        <button class="registration-button" @click="$router.push('/Registration')">зарегистрироваться</button>
+        <button class="registration-button" @click="$router.push('/Registration')">Зарегистрироваться</button>
     </div>
 </template>
 

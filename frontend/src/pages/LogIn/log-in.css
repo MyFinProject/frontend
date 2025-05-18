@@ -14,7 +14,7 @@
   gap: 50px;
 }
 
-.button_back{
+.button-back{
     margin-right: 20px;
     height: 40px;
     border-radius: 10px;
@@ -26,14 +26,14 @@
     color: rgb(58, 58, 58);
 }
 
-.button_personal_account{
-    margin-right: 20px;
-    height: 40px;
-    border-radius: 10px;
-    border: 2px solid rgb(58, 58, 58);
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    padding: 0 15px;
-    color: rgb(58, 58, 58);
+.button-personal-account{
+  margin-right: 20px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid rgb(58, 58, 58);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding: 0 15px;
+  color: rgb(58, 58, 58);
 }

@@ -1,9 +1,9 @@
 <template>
-  <div class="top_menu">
+  <div class="top-menu">
     <button class="logo" @click="$router.push('/')">MyFin</button>
     <div class="right-buttons">
-      <button class="history" @click="$router.push('/History')">история операций</button>
-      <button class="exit_button" @click="$router.push('/LogOut')">Log out</button>
+      <button class="history" @click="$router.push('/History')">История операций</button>
+      <button class="exit-button" @click="$router.push('/LogOut')">Выйти</button>
     </div>
   </div>  
 </template>

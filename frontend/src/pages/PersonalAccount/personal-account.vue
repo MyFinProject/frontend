@@ -2,7 +2,7 @@
 <script setup>
 import top_menu from '../../components/TopMenuPersonalAccount/top-menu-personal-account.vue';
 import balance from '../../components/BalanceCard/balance-card.vue';
-import transfer from '../../components/Transfer/Transfer.vue';
+import transfer from '../../components/Transfer/transfer.vue';
 </script>
 
 <template>

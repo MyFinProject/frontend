@@ -1,7 +1,7 @@
 <template>
     <div> 
         <span class="MyFin">MyFin</span>
-        <button class="back-button" @click="$router.push('/PersonalAccount')">назад</button>
+        <button class="back-button" @click="$router.push('/PersonalAccount')">Назад</button>
     </div>
     <div class="background">
         <span class="question">Вы уверены, что хотите выйти?</span>

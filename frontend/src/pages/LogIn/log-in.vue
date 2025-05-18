@@ -1,5 +1,5 @@
 <script setup>
-import LogInField from '../../components/LogInField/LogInField.vue';
+import LogInField from '../../components/LogInField/log-in-field.vue';
 </script>
 
 <template>

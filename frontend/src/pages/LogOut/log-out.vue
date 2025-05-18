@@ -1,6 +1,6 @@
 
 <script setup>
-import log_out from '../../components/LogOut/LogOut.vue';
+import log_out from '../../components/LogOut/log-out.vue';
 </script>
 
 <template>
