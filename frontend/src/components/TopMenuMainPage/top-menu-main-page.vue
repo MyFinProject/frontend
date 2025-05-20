@@ -8,6 +8,6 @@
   </div>  
 </template>
 
-<style>
+<style scoped>
   @import './top-menu-main-page.css';
 </style>
