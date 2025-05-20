@@ -3,7 +3,7 @@
 import TopMenuPersonalAccount from '../../components/TopMenuPersonalAccount/top-menu-personal-account.vue';
 import BalanceCard from '../../components/BalanceCard/balance-card.vue';
 import Transfer from '../../components/Transfer/Transfer.vue';
-import Receipt from '../../components/ReceiptAdding/ReceiptAdding.vue';
+import Wallet from '../../components/WalletPersonalAccount/WalletPersonalAccount.vue';
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import Receipt from '../../components/ReceiptAdding/ReceiptAdding.vue';
       <TopMenuPersonalAccount />
       <div class="background">
         <BalanceCard />
-        <Receipt />
+        <Wallet />
       </div>
       <Transfer />
     </div>
