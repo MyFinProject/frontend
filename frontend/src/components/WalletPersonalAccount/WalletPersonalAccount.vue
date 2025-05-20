@@ -1,11 +1,22 @@
 <template>
     <div class="background-all">
         <span class="title-wallet">Кошельки и счета</span>
-        <button class="add-wallet-button" @click="showModal = true">+</button>
+
+        <div class="box-wallets">
+            <div class="background-wallet">
+                <img class="svg-image-icons-wallet" src="@/assets/icons/icons-wallet/1.svg" alt="icon">
+            </div>
+
+            <button class="add-wallet-button" @click="showModal = true">
+                <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
+            </button>
+        </div>
+
+        
 
         <div v-if="showModal" class="box-overlay" @click.self="closeModal">
             <div class="background-overlay">
-                <span class="close-modal" @click="closeModal">&times;</span>
+                <span class="close" @click="closeModal">&times;</span>
                 <span class="title-new-wallet">Добавить новый кошелек</span>
                 <div> 
                     <div>
