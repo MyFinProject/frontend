@@ -58,7 +58,7 @@
 </script>
 
 
-<style>
+<style scoped>
   @import './balance-card.css';
 </style>
 

@@ -24,6 +24,6 @@
   }
 </script>  
 
-<style>
+<style scoped>
 @import './body-history.css';
 </style>

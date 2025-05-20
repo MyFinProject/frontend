@@ -9,6 +9,6 @@
 </template>
 
   
-<style>
+<style scoped>
 @import './top-menu-history.css';
 </style>

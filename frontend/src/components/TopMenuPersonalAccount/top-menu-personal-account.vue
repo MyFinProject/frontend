@@ -10,6 +10,6 @@
 
 
 
-<style>
+<style scoped>
   @import './top-menu-personal-account.css';
 </style>
