@@ -169,3 +169,7 @@
   border: 2px solid rgb(41, 58, 43);
   border-radius: 4px;
 }
+
+.save-button:hover, .delete-button:hover {
+  background-color: rgb(46, 88, 95);
+}

@@ -4,30 +4,25 @@
       <div v-for="(item, index) in items" :key="index" class="category-name">
         <div class="goal-container">
           <span class="counter-goals">{{ index + 1 }}.</span>
-          <span class="category-name">Название категории</span>
-          <span class="limit">Ограничение:</span>
-          <button class="settings-wallet-button" @click="openOverlay(index)">
+          <span class="category-name">{{ item.categoryName }}</span>
+          <span class="limit">Ограничение: {{ item.limit }}</span>
+          <button class="settings-wallet-button" @click="openEditOverlay(index)">
               <img class="svg-image-pencil" src="@/assets/icons/pencil.svg" alt="pencil">
           </button>
         </div>
       </div>
-      <button class="button-add" @click="addRow">Добавить цель</button>
+      <button class="button-add" @click="openAddOverlay">Добавить цель</button>
 
-      
-      <div v-if="showOverlay" class="overlay-box">
+      <div v-if="showEditOverlay" class="overlay-box">
         <div class="overlay-background">
+          <span class="close" @click="closeEditOverlay">&times;</span>
+          <span class="category-name-overlay">Редактирование цели</span>
           <div>
-            <span class="close" @click="closeOverlay">&times;</span>
-          </div>
-          <div>
-            <span class="category-name-overlay">Название категории</span>
-          </div>
-          <div>
-            <span class="questions-editing">Изменение названия:</span>
+            <span class="questions-editing">Название категории:</span>
             <input v-model="editedItem.categoryName" class="edit-input">
           </div>
           <div>
-            <span class="questions-editing">Изменение ограничения:</span>
+            <span class="questions-editing">Ограничение:</span>
             <input v-model="editedItem.limit" class="edit-input">
           </div>
           <div class="save-delete-box">
@@ -37,7 +32,24 @@
         </div>
       </div>
 
-
+      <div v-if="showAddOverlay" class="overlay-box">
+        <div class="overlay-background">
+          <span class="close" @click="closeAddOverlay">&times;</span>
+          <span class="category-name-overlay">Добавление новой цели</span>
+          <div>
+            <span class="questions-editing">Название категории:</span>
+            <input v-model="newItem.categoryName" class="edit-input" placeholder="Введите название">
+          </div>
+          <div>
+            <span class="questions-editing">Ограничение:</span>
+            <input v-model="newItem.limit" class="edit-input" placeholder="Введите ограничение">
+          </div>
+          <div class="save-delete-box">
+            <button class="save-button" @click="addNewItem">Добавить</button>
+            <button class="delete-button" @click="closeAddOverlay">Отмена</button>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -46,35 +58,53 @@ export default {
   data() {
     return {
       items: [{ 
+        categoryName: 'Имя категории', 
+        limit: '0' 
+      }],
+      showEditOverlay: false,
+      showAddOverlay: false,
+      editedIndex: -1,
+      editedItem: { 
         categoryName: '', 
         limit: '' 
-      }],
-      showOverlay: false,
-      editedIndex: -1,
-      editedItem: { value: '' },
-      categoryName: '', 
-      limit: '' 
+      },
+      newItem: {
+        categoryName: '',
+        limit: ''
+      }
     }
   },
   methods: {
-    addRow() {
-      this.items.push({ value: '' })
+    openAddOverlay() {
+      this.newItem = { categoryName: '', limit: '' };
+      this.showAddOverlay = true;
+    },
+    closeAddOverlay() {
+      this.showAddOverlay = false;
+    },
+    addNewItem() {
+      if (this.newItem.categoryName.trim()) {
+        this.items.push({ ...this.newItem });
+        this.closeAddOverlay();
+      }
+    },
+    openEditOverlay(index) {
+      this.editedIndex = index;
+      this.editedItem = { ...this.items[index] };
+      this.showEditOverlay = true;
+    },
+    closeEditOverlay() {
+      this.showEditOverlay = false;
     },
     removeRow(index) {
-      this.items.splice(index, 1)
-      this.closeOverlay()
-    },
-    openOverlay(index) {
-      this.editedIndex = index
-      this.editedItem = { ...this.items[index] }
-      this.showOverlay = true
-    },
-    closeOverlay() {
-      this.showOverlay = false
+      this.items.splice(index, 1);
+      this.closeEditOverlay();
     },
     saveChanges() {
-      this.items[this.editedIndex] = { ...this.editedItem }
-      this.closeOverlay()
+      if (this.editedItem.categoryName.trim()) {
+        this.items[this.editedIndex] = { ...this.editedItem };
+        this.closeEditOverlay();
+      }
     }
   }
 }

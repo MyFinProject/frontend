@@ -173,19 +173,19 @@
 
 .currency-settings{
   display: flex;
-    width: 100%;
-    justify-content: space-between; 
-    margin-top: 10px; 
-    margin-bottom: 10px; 
+  width: 100%;
+  justify-content: space-between; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
 .currency-button.selected {
-    background-color: rgb(64, 127, 138);
-    border: 2px solid rgb(28, 46, 29);
+  background-color: rgb(64, 127, 138);
+  border: 2px solid rgb(28, 46, 29);
 }
 
 .currency-button:hover {
-    background-color: rgb(46, 88, 95);
+  background-color: rgb(46, 88, 95);
 }
 
 .image-button{
