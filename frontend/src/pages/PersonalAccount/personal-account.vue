@@ -1,15 +1,19 @@
 
 <script setup>
-import top_menu from '../../components/TopMenuPersonalAccount/top-menu-personal-account.vue';
-import balance from '../../components/BalanceCard/balance-card.vue';
-import transfer from '../../components/Transfer/transfer.vue';
+import TopMenuPersonalAccount from '../../components/TopMenuPersonalAccount/top-menu-personal-account.vue';
+import BalanceCard from '../../components/BalanceCard/balance-card.vue';
+import Transfer from '../../components/Transfer/Transfer.vue';
+import Wallet from '../../components/WalletPersonalAccount/WalletPersonalAccount.vue';
 </script>
 
 <template>
     <div class="mybody">
-      <top_menu />
-      <balance />
-      <transfer />
+      <TopMenuPersonalAccount />
+      <div class="background">
+        <BalanceCard />
+        <Wallet />
+      </div>
+      <Transfer />
     </div>
 </template>
 

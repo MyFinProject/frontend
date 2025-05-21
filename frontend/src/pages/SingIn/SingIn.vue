@@ -1,6 +1,6 @@
 
 <script setup>
-import registration_field from '../../components/RegistrationField/registration-field.vue';
+import registration_field from '../../components/SingInField/SingInField.vue';
 </script>
 
 <template>
@@ -10,5 +10,5 @@ import registration_field from '../../components/RegistrationField/registration-
 </template>
 
 <style scoped>
-@import './registration.css';
+@import './SingIn.css';
 </style>

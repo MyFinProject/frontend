@@ -60,7 +60,7 @@ methods: {
 }
 </script>  
 
-<style>
+<style scoped>
 @import './history-field.css';
 @import '../HistoryElement/history-element.css';
 </style>

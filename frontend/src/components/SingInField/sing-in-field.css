@@ -46,7 +46,7 @@
   font-weight: bold;
 }
 
-.log-in-button, .back-button, .registration-end{
+.log-in-button, .back-button, .sing-in-end{
   border-radius: 10px;
   border: 2px solid rgb(215, 222, 221);
   color: rgb(215, 222, 221);
@@ -58,7 +58,7 @@
 .log-in-button{
   margin: 0% auto;
   padding: 10px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .back-button{
@@ -69,13 +69,13 @@
   font-size: 20px;
 }
 
-.registration-end{
+.sing-in-end{
   margin: 0% auto;
   padding: 10px;
   font-size: 25px;
 }
 
-.log-in-button:hover, .back-button:hover, .registration-end:hover{
+.log-in-button:hover, .back-button:hover, .sing-in-end:hover{
   color: #ffffff;
   cursor: pointer;
   transform: translateY(-2px);

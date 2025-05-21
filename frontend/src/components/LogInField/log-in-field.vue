@@ -4,10 +4,10 @@
     <span class="input-row-label">Вход</span>
     <input v-model="username" class="input-row" type="text" placeholder="Введите имя пользователя">
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
-    <button class="registration-button" @click="login">Войти</button>
+    <button class="log-in-end" @click="login">Войти</button>
     <div class="centered-row">
         <span class="question">Нет аккаунта? →</span>
-        <button class="registration-button" @click="$router.push('/Registration')">Зарегистрироваться</button>
+        <button class="sing-in-button" @click="$router.push('/SingIn')">Зарегистрироваться</button>
     </div>
 </template>
 

@@ -16,6 +16,6 @@ defineProps({
 })
 </script>
 
-<style>
+<style scoped>
 @import './history-element.css';
 </style>
