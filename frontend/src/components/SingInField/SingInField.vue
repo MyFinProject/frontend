@@ -88,11 +88,14 @@ export default {
                     console.log('Успешная регистрация!');
                     this.$router.push('/PersonalAccount'); 
                 }
-
-            } catch (error) {
+            } 
+            
+            catch (error) {
                 console.error('Ошибка:', error.message);
                 this.error = 'Ошибка при отправке запроса';
-            } finally {
+            } 
+
+            finally {
                 this.isLoading = false;
             }
         }

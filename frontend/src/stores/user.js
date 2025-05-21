@@ -2,10 +2,10 @@ import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', {
     state: () => ({
-            username: '',
-            email: '',
-            userId: '',
-            isAuthenticated: false
+        username: '',
+        userId: '',
+        email: '',
+        isAuthenticated: false
     }),
     actions: {
         init() {
@@ -24,12 +24,8 @@ export const useUserStore = defineStore('user', {
         },
         logout() {
             const userIdToRemove = this.userId;
-            this.username = '';
-            this.email = '';
-            this.userId = '';
-            this.isAuthenticated = false;
+            this.$reset();
             localStorage.removeItem(`user_${userIdToRemove}`);
         }
-
     }
 });

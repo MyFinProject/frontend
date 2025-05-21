@@ -13,20 +13,26 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { useUserStore } from '@/stores/user';
 
 export default {
     methods: {
         async log_out() {
-            const userStore = useUserStore();
-            userStore.logout({});
-            this.$router.push('/'); 
+            
+            try {
+                const userStore = useUserStore();
+                userStore.logout();
+                this.$router.push('/'); 
+            } 
+
+            catch (error) {
+                console.error('Ошибка при выходе:', error.message);
+            }
         }
     }
 }
 </script>
 
 <style scoped>
-@import './log-out.css';
+    @import './log-out.css';
 </style>

@@ -54,10 +54,14 @@ export default {
                     });
 
                     this.$router.push('/PersonalAccount'); 
-                } catch (error) {
+                } 
+
+                catch (error) {
                     this.error = 'Неверный логин или пароль';
                     console.error('Полная ошибка:', error.message);
-                } finally {
+                } 
+                
+                finally {
                     this.isLoading = false;
                 }
             }

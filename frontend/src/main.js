@@ -2,7 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHistory} from 'vue-router'
-import { createPinia } from 'pinia'
+import { createPinia, storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.js';
 
 import PersonalAccount from './pages/PersonalAccount/personal-account.vue'
@@ -16,12 +16,12 @@ import App from './App.vue'
 const app = createApp(App)
 
 const routes = [
-    {path: '/PersonalAccount', name: 'Personal account', component: PersonalAccount},
-    {path: '/', name: 'Main page', component: MainPage},
-    {path: '/History', name: 'History', component: History},
-    {path: '/LogIn', name: 'Log In', component: LogIn},
-    {path: '/LogOut', name: 'Log Out', component: LogOut},
-    {path: '/SingIn', name: 'Registration', component: SingIn}
+    {path: '/', name: 'Main page', component: MainPage, meta: { requiresGuest: true }},
+    {path: '/LogIn', name: 'Log In', component: LogIn, meta: { requiresGuest: true }},
+    {path: '/SingIn', name: 'Registration', component: SingIn, meta: { requiresGuest: true }},
+    {path: '/PersonalAccount', name: 'Personal account', component: PersonalAccount, meta: { requiresAuthentication: true } },
+    {path: '/History', name: 'History', component: History, meta: { requiresAuthentication: true }},
+    {path: '/LogOut', name: 'Log Out', component: LogOut, meta: { requiresAuthentication: true }}
 ]
 
 const router = createRouter({
@@ -29,9 +29,38 @@ const router = createRouter({
     routes
 })
 
-app.use(router)
 app.use(createPinia())
-app.mount('#app')
 
 const userStore = useUserStore();
 userStore.init();
+
+router.beforeEach((to, from, next) => {
+    
+    const { isAuthenticated } = storeToRefs(userStore);
+    
+    if (to.meta.requiresAuthentication) {
+        console.log(isAuthenticated.value);
+        if (isAuthenticated.value) {
+            next();
+        } 
+        else {
+            next('/');
+        }
+    }
+
+    else if (to.meta.requiresGuest) {
+        console.log(isAuthenticated.value);
+        if (isAuthenticated.value) {
+            next('/PersonalAccount');
+        }
+        else {
+            next();
+        }
+    }
+    
+})
+
+app.use(router)
+
+app.mount('#app')
+
