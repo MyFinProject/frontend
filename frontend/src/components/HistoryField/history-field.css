@@ -5,38 +5,6 @@
     margin-top: -30px;
 }
 
-.income-expense-row {
-    display: flex;     
-    justify-content: space-between;
-    width: 100%;
-    margin: 20px 0;
-}
-  
-.income-expense-details {
-    border-radius: 10px;
-    background-color: rgb(215, 222, 221);
-    padding: 8px 16px;
-    color: rgb(58, 58, 58);
-    font-size: 20px;
-    width: 300px;
-    height: auto;
-    font-weight: bold;
-    position: static;
-    left: auto;
-    right: auto;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.expenses-value{    
-    padding: 15px;
-    color: rgb(50, 50, 50);
-}
-
-.income-value{
-    padding: 20px;
-    color:rgb(26, 179, 59);
-}
-
 .history-title {
     color: rgb(230, 226, 226);
     font-size: 32px;

@@ -1,30 +1,9 @@
 <template>
     <div class="page-container">
         <div class="history-title">
-            <span>История</span>
-        </div>
-        <div class="income-expense-row">
-            <div class="income-expense-details">
-                <div>
-                    <span class="expenses-value">{{ expenses }} $</span>
-                </div>
-                <div>
-                    <span> - Расходы </span>
-                </div>
-            </div>
-            <div class="income-expense-details">
-                <div>
-                    <span class="income-value">{{ income }} $</span>
-                </div>
-                <div>
-                    <span> + Доходы </span>
-                </div>
-            </div>
+            <span>История WIP</span>
         </div>
         <div class="myhistory">
-            <history_element />
-            <history_element />
-            <history_element />
             <history_element />
             <history_element />
             <history_element />
