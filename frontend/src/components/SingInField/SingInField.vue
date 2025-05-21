@@ -4,7 +4,7 @@
     <span class="input-row-label">Регистрация</span>
     <input v-model="username" class="input-row" type="text" placeholder="Введите имя пользователя">
     <input v-model="email" class="input-row" type="text" placeholder="Введите почту">
-    <div v-if="passwordError" class="error-message">{{ passwordError }}</div>
+    <div v-if="passwordError" class="error-message">{{ error }}</div>
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
     <button class="sing-in-end" @click="register">Завершить регистрацию</button>
     <div class="centered-row">
@@ -24,32 +24,32 @@ export default {
             username: '',
             email: '',
             password: '',
-            passwordError: '',
+            error: '',
             isLoading: false,
         }
     },
     methods: {
         validatePassword() {
             if (this.password.length < 8) {
-                this.passwordError = 'Пароль должен содержать минимум 8 символов';
+                this.error = 'Пароль должен содержать минимум 8 символов';
                 return false;
             }
             if (!/\d/.test(this.password)) {
-                this.passwordError = 'Пароль должен содержать хотя бы одну цифру';
+                this.error = 'Пароль должен содержать хотя бы одну цифру';
                 return false;
             }
             
             if (!/[A-ZА-Я]/.test(this.password)) {
-                this.passwordError = 'Пароль должен содержать хотя бы одну заглавную букву';
+                this.error = 'Пароль должен содержать хотя бы одну заглавную букву';
                 return false;
             }
 
             if (!/[a-zа-я]/.test(this.password)) {
-                this.passwordError = 'Пароль должен содержать хотя бы одну строчную букву';
+                this.error = 'Пароль должен содержать хотя бы одну строчную букву';
                 return false;
             }
             
-            this.passwordError = '';
+            this.error = '';
             return true;
         },
         async register() {
@@ -63,10 +63,9 @@ export default {
                 const userStore = useUserStore();
                 const { isAuthenticated } = storeToRefs(userStore);
 
-                console.log(isAuthenticated.value);
 
                 if (isAuthenticated.value) {
-                    this.passwordError = 'Пользователь уже авторизован. Вы не можете зарегистрировать новый аккаунт!';    
+                    this.error = 'Пользователь уже авторизован. Вы не можете зарегистрировать новый аккаунт!';    
                     console.error('Ошибка: Пользователь уже авторизован');
                 }
                 

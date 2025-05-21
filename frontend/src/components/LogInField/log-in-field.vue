@@ -30,7 +30,7 @@ export default {
             this.isLoading = true;
             
             try {
-                const response = await axios.get(`http://26.255.57.122:5260/api/controller/login`, {
+                const response = await axios.post(`http://26.255.57.122:5260/api/controller/login`, {
                     username: this.username,
                     password: this.password
                 });
