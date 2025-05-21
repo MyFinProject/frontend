@@ -4,7 +4,7 @@
     <span class="input-row-label">Регистрация</span>
     <input v-model="username" class="input-row" type="text" placeholder="Введите имя пользователя">
     <input v-model="email" class="input-row" type="text" placeholder="Введите почту">
-    <div v-if="passwordError" class="error-message">{{ error }}</div>
+    <div v-if="error" class="error-message">{{ error }}</div>
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
     <button class="sing-in-end" @click="register">Завершить регистрацию</button>
     <div class="centered-row">
@@ -71,16 +71,16 @@ export default {
                 
                 else {
                     const response = await axios.post(`http://26.255.57.122:5260/api/controller/register`, {
-                        username: this.username,
-                        email: this.email,
-                        password: this.password
+                        username: this.username.trim(),
+                        email: this.email.trim(),
+                        password: this.password.trim()
                     });
 
                     const userTokenResponse = (await axios.get(`http://26.255.57.122:5260/api/controller/decode/${response.data.token}`));
 
                     userStore.login({
-                        username: this.username,
-                        email: this.email,
+                        username: this.username.trim(),
+                        email: this.email.trim(),
                         userId: userTokenResponse.data,
                         isAuthenticated: true
                     });
@@ -91,7 +91,7 @@ export default {
 
             } catch (error) {
                 console.error('Ошибка:', error.message);
-                this.passwordError = 'Ошибка при отправке запроса';
+                this.error = 'Ошибка при отправке запроса';
             } finally {
                 this.isLoading = false;
             }

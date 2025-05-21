@@ -88,3 +88,9 @@
   text-shadow: 0 0 10px rgba(215, 222, 221, 0.5);
   cursor: pointer;
 }
+
+.error-message {
+  color: rgb(215, 222, 221);
+  font-size: 20px;
+  margin: 0% auto;
+}
