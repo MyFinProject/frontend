@@ -14,13 +14,18 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { useUserStore } from '@/stores/user';
+import { storeToRefs } from 'pinia';
+
 export default {
     data() {
         return {
             username: '',
             email: '',
             password: '',
-            passwordError: '' 
+            passwordError: '',
+            isLoading: false,
         }
     },
     methods: {
@@ -47,16 +52,50 @@ export default {
             this.passwordError = '';
             return true;
         },
-        register() {
+        async register() {
             if (!this.validatePassword()) {
                 return; 
             }
-            console.log('Регистрация:', {
-                username: this.username,
-                email: this.email,
-                password: this.password
-            });
-            this.$router.push('/PersonalAccount'); 
+            
+            this.isLoading = true;
+
+            try {
+                const userStore = useUserStore();
+                const { isAuthenticated } = storeToRefs(userStore);
+
+                console.log(isAuthenticated.value);
+
+                if (isAuthenticated.value) {
+                    this.passwordError = 'Пользователь уже авторизован. Вы не можете зарегистрировать новый аккаунт!';    
+                    console.error('Ошибка: Пользователь уже авторизован');
+                }
+                
+                else {
+                    const response = await axios.post(`http://26.255.57.122:5260/api/controller/register`, {
+                        username: this.username,
+                        email: this.email,
+                        password: this.password
+                    });
+
+                    const userTokenResponse = (await axios.get(`http://26.255.57.122:5260/api/controller/decode/${response.data.token}`));
+
+                    userStore.login({
+                        username: this.username,
+                        email: this.email,
+                        userId: userTokenResponse.data,
+                        isAuthenticated: true
+                    });
+
+                    console.log('Успешная регистрация!');
+                    this.$router.push('/PersonalAccount'); 
+                }
+
+            } catch (error) {
+                console.error('Ошибка:', error.message);
+                this.passwordError = 'Ошибка при отправке запроса';
+            } finally {
+                this.isLoading = false;
+            }
         }
     }
 }
