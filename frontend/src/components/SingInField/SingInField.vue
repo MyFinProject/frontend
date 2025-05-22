@@ -63,7 +63,6 @@ export default {
                 const userStore = useUserStore();
                 const { isAuthenticated } = storeToRefs(userStore);
 
-
                 if (isAuthenticated.value) {
                     this.error = 'Пользователь уже авторизован. Вы не можете зарегистрировать новый аккаунт!';    
                     console.error('Ошибка: Пользователь уже авторизован');

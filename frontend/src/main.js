@@ -39,7 +39,6 @@ router.beforeEach((to, from, next) => {
     const { isAuthenticated } = storeToRefs(userStore);
     
     if (to.meta.requiresAuthentication) {
-        console.log(isAuthenticated.value);
         if (isAuthenticated.value) {
             next();
         } 
@@ -49,7 +48,6 @@ router.beforeEach((to, from, next) => {
     }
 
     else if (to.meta.requiresGuest) {
-        console.log(isAuthenticated.value);
         if (isAuthenticated.value) {
             next('/PersonalAccount');
         }
@@ -63,4 +61,3 @@ router.beforeEach((to, from, next) => {
 app.use(router)
 
 app.mount('#app')
-

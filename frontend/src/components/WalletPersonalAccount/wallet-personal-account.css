@@ -49,7 +49,6 @@
   align-items: center;
   font-weight: bold;
   font-size: 20px;
-
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -66,8 +65,8 @@
   justify-content: left;
 }
 
-
 .new-wallet-questions-title{
+  margin: 10px;
   width: 100%;
   font-size: 20px;
   text-align: center;
@@ -89,7 +88,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 5;
 }
 
 .background-overlay {
@@ -139,22 +138,10 @@
   background-color: rgb(64, 127, 138);
 }
 
-.svg-image-dollar{
+.svg-image-currency{
   margin-left: 9px;
   width: 33px;
   height: 33px;
-}
-
-.svg-image-yuan{
-  margin-left: 10px;
-  width: 30px;
-  height: 30px;
-}
-
-.svg-image-rub{
-  margin-left: 10px;
-  width: 30px;
-  height: 30px;
 }
 
 .currency-button{
@@ -167,34 +154,53 @@
   z-index: 1;
   cursor: pointer;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 .currency-settings{
   display: flex;
-    width: 100%;
-    justify-content: space-between; 
-    margin-top: 10px; 
-    margin-bottom: 10px; 
+  width: 100%;
+  justify-content: space-between; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
-.currency-button.selected {
-    background-color: rgb(64, 127, 138);
-    border: 2px solid rgb(28, 46, 29);
+.icon-settings {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 25px;
+  gap: 8px;
+  max-height: 120px;
+  overflow-y: visible;
+  padding-right: 10px;
+  width: calc(100% - 25px);
 }
 
-.currency-button:hover {
-    background-color: rgb(46, 88, 95);
+.currency-button:hover, .image-button:hover {
+  background-color: rgb(46, 88, 95);
+  transform: translateY(-3px);
 }
 
 .image-button{
-  margin-top: 10%;
-  margin: auto;
+  margin: 0;
+  flex: 0 0 auto;
   border-radius: 40px;
   width: 40px;
   background-color: rgb(41, 58, 43);
   height: 40px;
   cursor: pointer;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.currency-button.selected-currency{
+  background-color: rgb(64, 127, 138);
+  transition: all 0.23 ease;
+}
+
+.image-button.selected-icon {
+  background-color: rgb(64, 127, 138);
+  transition: all 0.23 ease;
 }
 
 .svg-image-icons{
