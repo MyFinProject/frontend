@@ -1,28 +1,86 @@
 <template>
   <div class="balance-back">
-      <div>
-          <span class="total-balance">Всего на счету: {{balance_value}} $</span>
+    <span class="wallet-elements">Название счета: {{ NameWallet }}</span>
+    <span class="wallet-elements">Баланс: {{ BalanceValue }}</span>
+    <div class="button-page-box">
+      <button class="operations-button" @click="showIncomeOverlay = true">Добавить доходы</button>
+      <button class="operations-button" @click="showExpenseOverlay = true">Добавить расходы</button>
+      <button class="operations-button" @click="showChequeOverlay = true">Добавить чек</button>
+    </div>
+
+    <div v-if="showIncomeOverlay" class="overlay-box">
+      <div class="overlay-background">
+        <span class="close" @click="showIncomeOverlay = false">&times;</span>
+        <span class="title-overlay">Добавление доходов</span>
+        <span class="question-title">Введите сумму:</span>
+        <input class="input-imcome-exp" type="text" placeholder="Введите сумму">
+        <span class="question-title">Введите описание:</span>
+        <input class="input-imcome-exp" type="text" placeholder="Введите описание">
+        <button class="end-overlay-button" @click="addIncome">Добавить</button>
       </div>
-      <div class="balance-details">
-          <span class="balance-separately">Наличные: {{cash}} $</span>
-          <span class="balance-separately">На банковских картах: {{card}} $</span>
-          <span class="balance-separately">Вклады: {{contribution}} $</span>
+    </div>
+
+    <div v-if="showExpenseOverlay" class="overlay-box">
+      <div class="overlay-background">
+        <span class="close" @click="showExpenseOverlay = false">&times;</span>
+        <span class="title-overlay">Добавление расходов</span>
+        <span class="question-title">Введите сумму:</span>
+        <input class="input-imcome-exp" type="text" placeholder="Введите сумму">
+        <span class="question-title">Введите описание:</span>
+        <input class="input-imcome-exp" type="text" placeholder="Введите описание">
+        <button class="end-overlay-button" @click="addExpense">Добавить</button>
       </div>
+    </div>
+
+    <div v-if="showChequeOverlay" class="overlay-box">
+      <div class="overlay-background">
+        <span class="close" @click="showChequeOverlay = false">&times;</span>
+        <span class="title-overlay">Добавление чека</span>
+        <span class="question-title">Добавьте фотографию:</span>
+        <input id="fileInput" type="file" @change="handleFileUpload" accept="image/*" style="display: none">
+        <label for="fileInput" class="custom-file-label">{{ selectedFile ? selectedFile.name : 'Загрузить чек' }}</label>
+        <button class="end-overlay-button" @click="addCheque">Добавить</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        balance_value: 1.5,
-        cash:  0.5,
-        card:  0.5,
-        contribution: 0.5
+export default {
+  data() {
+    return {
+      BalanceValue: 0,
+      NameWallet: 'sdssdfsdf',
+      showIncomeOverlay: false,
+      showExpenseOverlay: false,
+      showChequeOverlay: false,
+      incomeAmount: '',
+      expenseAmount: '',
+      selectedFile: null
+    }
+  },
+  methods: {
+    addIncome() {
+      this.showIncomeOverlay = false;
+      this.incomeAmount = 0;
+    },
+    handleFileUpload(event) {
+      this.selectedFile = event.target.files[0];
+    },
+    addCheque() {
+      if (this.selectedFile) {
+        console.log('Файл для загрузки:', this.selectedFile);
       }
+      this.showChequeOverlay = false;
+      this.selectedFile = null;
+    },
+    addExpense() {
+      this.showExpenseOverlay = false;
+      this.expenseAmount = 0;
     }
   }
-</script>  
+}
+</script>
 
 <style scoped>
 @import './body-history.css';
