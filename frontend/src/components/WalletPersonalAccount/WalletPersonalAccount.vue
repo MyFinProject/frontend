@@ -132,8 +132,10 @@ export default {
             try {
                 const response = await axios.post(`http://26.255.57.122:5260/api/wallets/${userId.value}`, {
                     name: this.walletName,
-                    currencieId: currencyId
+                    currencieId: currencyId,
+                    ImageAdress: '123'
                 });
+                
                 this.wallets.push({
                     id: response.data.WalletId,
                     path: this.selectedIcon.path
