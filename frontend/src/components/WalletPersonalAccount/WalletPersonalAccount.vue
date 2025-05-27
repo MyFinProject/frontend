@@ -5,7 +5,8 @@
                 <button 
                     v-for="(wallet) in wallets.slice(0, 3)" 
                     :key="wallet.id"
-                    class="background-wallet">
+                    class="background-wallet"
+                    @click="this.$router.push(`/History/${wallet.walletId}`);">
                     <img 
                         class="svg-image-icons-wallet" 
                         :src="wallet.imageAdress"
@@ -76,7 +77,6 @@
 import axios from 'axios';
 import { useUserStore } from '@/stores/user';
 import { useWalletStore } from '@/stores/wallet'
-import { storeToRefs } from 'pinia';
 import { mapState } from 'pinia';
 
 export default {
@@ -89,6 +89,7 @@ export default {
             showAllWallets: false,
             walletName: '',
             Picture: '',
+            walletId: '',
             selectedCurrency: null,
             selectedIcon: null,
             currencies: [{ symbol: '$', code: 'USD', path:  new URL('@/assets/icons/icons-wallet-currency/dollar.svg', import.meta.url).href},
@@ -114,7 +115,6 @@ export default {
         async createWallet() {
             const userStore = useUserStore();
             const walletStore = useWalletStore();
-            const { userId } = storeToRefs(userStore);
 
             if (!this.selectedCurrency || !this.selectedIcon || !this.walletName.trim()) {
                 alert('Заполните все обязательные поля');

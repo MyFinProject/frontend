@@ -20,7 +20,7 @@ const routes = [
     {path: '/LogIn', name: 'Log In', component: LogIn, meta: { requiresGuest: true }},
     {path: '/SingIn', name: 'Registration', component: SingIn, meta: { requiresGuest: true }},
     {path: '/PersonalAccount', name: 'Personal account', component: PersonalAccount, meta: { requiresAuthentication: true } },
-    {path: '/History', name: 'History', component: History, meta: { requiresAuthentication: true }},
+    {path: '/History/:walletId', name: 'History', component: History, meta: { requiresAuthentication: true }},
     {path: '/LogOut', name: 'Log Out', component: LogOut, meta: { requiresAuthentication: true }}
 ]
 

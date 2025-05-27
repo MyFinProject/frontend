@@ -28,6 +28,17 @@ export const useWalletStore = defineStore('wallets', {
             catch(error){
                 console.error('Ошибка создания кошелька: ', error)
             }
+        },
+        async deleteWallet(userId, walletId){
+            this.isLoading = true
+            try {
+                await axios.delete(`http://26.255.57.122:5260/api/wallets/DeleteWallet/${walletId}`);
+                const response = await axios.get(`http://26.255.57.122:5260/api/wallets/AllByUserId/${userId}`);
+                this.wallets = response.data
+            }
+            catch(error){
+                console.error('Ошибка удаления кошелька: ', error)
+            }
         }
     }
 })

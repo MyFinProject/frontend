@@ -13,9 +13,9 @@
         <span class="close" @click="showIncomeOverlay = false">&times;</span>
         <span class="title-overlay">Добавление доходов</span>
         <span class="question-title">Введите сумму:</span>
-        <input class="input-imcome-exp" type="text" placeholder="Введите сумму">
+        <input class="input-imcome-exp" type="text" placeholder="Введите сумму" v-model="incomeAmount" required>
         <span class="question-title">Введите описание:</span>
-        <input class="input-imcome-exp" type="text" placeholder="Введите описание">
+        <input class="input-imcome-exp" type="text" placeholder="Введите описание" v-model="discription" required>
         <button class="end-overlay-button" @click="addIncome">Добавить</button>
       </div>
     </div>
@@ -25,9 +25,9 @@
         <span class="close" @click="showExpenseOverlay = false">&times;</span>
         <span class="title-overlay">Добавление расходов</span>
         <span class="question-title">Введите сумму:</span>
-        <input class="input-imcome-exp" type="text" placeholder="Введите сумму">
+        <input class="input-imcome-exp" type="text" placeholder="Введите сумму" v-model="expenseAmount" required>
         <span class="question-title">Введите описание:</span>
-        <input class="input-imcome-exp" type="text" placeholder="Введите описание">
+        <input class="input-imcome-exp" type="text" placeholder="Введите описание" v-model="discription" required>
         <button class="end-overlay-button" @click="addExpense">Добавить</button>
       </div>
     </div>
@@ -46,21 +46,39 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
       BalanceValue: 0,
-      NameWallet: 'sdssdfsdf',
+      NameWallet: '',
+      walletId: null,
       showIncomeOverlay: false,
       showExpenseOverlay: false,
       showChequeOverlay: false,
-      incomeAmount: '',
-      expenseAmount: '',
+      incomeAmount: 0,
+      expenseAmount: 0,
+      discription: '',
       selectedFile: null
     }
   },
+  created() {
+    this.walletId = this.$route.params.walletId;
+    this.loadWalletData();
+  },
   methods: {
+    async loadWalletData() {
+      try {
+        const response = await axios.get(`http://26.255.57.122:5260/api/wallets/${this.walletId}`);
+        console.log(response.data)
+        this.NameWallet = response.data.name;
+        this.BalanceValue = response.data.balance;
+      } catch (error) {
+        console.error("Ошибка загрузки:", error);
+      }
+    },
     addIncome() {
+      
       this.showIncomeOverlay = false;
       this.incomeAmount = 0;
     },
