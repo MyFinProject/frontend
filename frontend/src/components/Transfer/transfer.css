@@ -76,6 +76,7 @@
 .overlay-box {
   display: flex;
   position: fixed;
+  border-radius: 6%;
   z-index: 1;
   left: 0;
   top: 0;

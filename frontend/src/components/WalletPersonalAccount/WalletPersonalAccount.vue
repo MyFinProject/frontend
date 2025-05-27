@@ -7,16 +7,58 @@
                 <img class="svg-image-icons-wallet" src="@/assets/icons/icons-wallet/1.svg" alt="icon">
             </div>
 
-            <button class="add-wallet-button" @click="showModal = true">
+            <button class="add-wallet-button" @click="showOverlay = true">
+                <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
+            </button>
+
+            <button class="add-wallet-button" @click="showOverlayAll = true">
                 <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
             </button>
         </div>
 
-        
-
-        <div v-if="showModal" class="box-overlay" @click.self="closeModal">
+        <div v-if="showOverlayAll" class="box-overlay" @click.self="closeOverlayAll">
             <div class="background-overlay">
-                <span class="close" @click="closeModal">&times;</span>
+                <span class="close" @click.stop="closeOverlayAll">&times;</span>
+                <span class="title-all-wallets">Все кошельки</span>
+                
+                <div v-for="(item, index) in items" :key="index" class="wallet-box">
+                    <span class="counter-wallet">{{ index + 1 }}.</span>
+
+                    <div class="image-button-all"> 
+                        <img class="svg-image-icons-all" src="@/assets/icons/icons-wallet/1.svg" alt="icon">
+                    </div>
+
+                    <span class="wallet-name">Название кошелька</span>
+
+                    <button class="settings-wallet-button" @click="openOverlaySettings">
+                        <img class="svg-image-pencil-all" src="@/assets/icons/pencil.svg" alt="pencil">
+                    </button>
+                </div>
+
+                <button @click="Addqwe">sdfsdf</button>
+
+            </div>
+        </div>
+
+        <div v-if="showOverlaySettings" class="box-overlay" @click.self="closeOverlaySettings">
+            <div ></div>
+            <div class="background-overlay">
+                <span class="close" @click.stop="closeOverlaySettings">&times;</span>
+                <span class="title-all-wallets">Настройки кошелька</span>
+
+                <span class="title-name-settings">Текущее название: {{ walletName}}</span>
+                <span class="title-name-settings">Измение названия:</span>
+                <input type="text" placeholder="Название кошелька" class="input-name-wallet" >
+                <div>
+                    <button type="submit" class="confirm-settings-button" @click="closeOverlaySettings">Добавить</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div v-if="showOverlay" class="box-overlay" @click.self="closeOverlay">
+            <div class="background-overlay">
+                <span class="close" @click="closeOverlay">&times;</span>
                 <span class="title-new-wallet">Добавить новый кошелек</span>
                 <div> 
                     <div>
@@ -65,7 +107,7 @@
                     
                     <span class="new-wallet-questions-title">Введите название для кошелька</span>
 
-                    <input type="text" placeholder="Название кошелька" class="input-name-wallet" v-model="walletName" required>
+                    <input type="text" placeholder="Название кошелька" class="input-name-wallet">
                     <div>
                         <button type="submit" class="add-button">Добавить</button>
                     </div>
@@ -79,18 +121,40 @@
 export default {
     data() {
         return {
-            showModal: false,
-            walletName: '',
+            showOverlay: false,
+            showOverlayAll: false,
+            showOverlaySettings: false,
+            walletName: 'asasdafd',
             selectedCurrency: '',
             Picture: '',
+            items: [{ 
+                categoryName: '', 
+                limit: '' 
+            }],
         };
     },
     methods: {
+        Addqwe(index){
+            this.items.push({ 
+                categoryName: '', 
+                limit: '' 
+            });
+        },
         selectIcon(iconName) {
             this.Picture = iconName;
         },
-        closeModal() {
-            this.showModal = false;
+        closeOverlay() {
+            this.showOverlay = false;
+        },
+        closeOverlayAll() {
+            this.showOverlayAll = false;
+        },
+        openOverlaySettings() {
+            this.showOverlaySettings = true;
+            this.showOverlayAll = false;
+        },
+        closeOverlaySettings() {
+            this.showOverlaySettings = false;
         },
         selectCurrency(currency) {
             this.selectedCurrency = currency;
