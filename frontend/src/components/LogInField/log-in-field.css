@@ -1,90 +1,98 @@
+/* --------- Text Elements --------- */
+.MyFin,
+.input-row-label,
+.question,
+.log-in-end,
+.back-button,
+.sing-in-button {
+  color: rgb(215, 222, 221);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
 .MyFin {
   position: absolute;
   top: 30px;
-  left:30px;
+  left: 30px;
   padding: 8px 16px;
-  color: rgb(215, 222, 221);
   font-size: 30px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.input-row {
-  background-color: rgb(215, 222, 221);
-  margin: 0% auto;
-  width: 100%;
-  max-width: 400px;
-  font-size: 25px;
-  border-radius: 5px;
-  padding: 5px;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.input-row-label {
-  padding-top: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(215, 222, 221);
-}
-
-.centered-row {
-  display: flex;
-  justify-content: center; 
-  gap: 15px;
-  width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
-}
-
-.question{
-  padding: 8px 16px;
-  color: rgb(215, 222, 221);
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.log-in-end, .back-button, .sing-in-button{
-  border-radius: 10px;
-  border: 2px solid rgb(215, 222, 221);
-  color: rgb(215, 222, 221);
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.log-in-end{
-  margin: 0% auto;
-  padding: 10px;
-  font-size: 25px;
-}
-
-.back-button{
-  position: absolute;
-  top: 30px;
-  right:30px;
-  padding: 8px 16px;
-  font-size: 20px;
-}
-
-.sing-in-button{
-  margin: 0% auto;
-  padding: 10px;
-  font-size: 20px;
-}
-
-.log-in-end:hover, .back-button:hover, .sing-in-button:hover{
-  color: #ffffff;
-  cursor: pointer;
-  transform: translateY(-2px);
-  background-color: rgba(215, 222, 221, 0.1);
-  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .MyFin:hover {
   transform: scale(1.05);
   text-shadow: 0 0 10px rgba(215, 222, 221, 0.5);
   cursor: pointer;
+}
+
+/* --------- Form Elements -------- */
+.input-row {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 25px;
+  background-color: rgb(215, 222, 221);
+  border-radius: 5px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.input-row-label {
+  padding-top: 10%;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centered-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.question {
+  padding: 8px 16px;
+  font-size: 22px;
+}
+
+/* -------- Buttons --------- */
+.log-in-end,
+.back-button,
+.sing-in-button {
+  border: 2px solid rgb(215, 222, 221);
+  border-radius: 10px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.log-in-end {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 8px 16px;
+  font-size: 20px;
+}
+
+.sing-in-button {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.log-in-end:hover,
+.back-button:hover,
+.sing-in-button:hover {
+  color: #ffffff;
+  cursor: pointer;
+  transform: translateY(-2px);
+  background-color: rgba(215, 222, 221, 0.1);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
 }

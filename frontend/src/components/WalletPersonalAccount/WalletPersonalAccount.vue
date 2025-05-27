@@ -50,7 +50,7 @@
                 <span class="title-name-settings">Измение названия:</span>
                 <input type="text" placeholder="Название кошелька" class="input-name-wallet" >
                 <div>
-                    <button type="submit" class="confirm-settings-button" @click="closeOverlaySettings">Добавить</button>
+                    <button type="submit" class="confirm-settings-button" @click="close">Добавить</button>
                 </div>
 
             </div>

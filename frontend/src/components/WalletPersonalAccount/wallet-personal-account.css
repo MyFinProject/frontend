@@ -1,181 +1,167 @@
-.background-all{
+/* ===== Основной контейнер кошелька ===== */
+.background-all {
     position: relative;
     overflow: hidden; 
     margin-top: 5%;
     margin-bottom: 5%;
-
     width: 480px;
     min-width: 200px;
     height: 180px;
-
     border-radius: 10px;
     background-color: rgb(41, 58, 43);
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
 }
 
-.title-wallet{
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 20px;
-  color: rgb(215, 222, 221);
-  margin-top: 5%;
+.title-wallet {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(215, 222, 221);
+    margin-top: 5%;
 }
 
-.add-wallet-button{
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 20px;
-
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  border: 2px solid rgb(215, 222, 221);
-  padding: 0 15px;
-  color: rgb(215, 222, 221);
-  cursor: pointer;
-  margin-top: 7%;
-  margin-left: 5%;
+.box-wallets {
+    display: flex;
+    justify-content: left;
 }
 
-.svg-image-icons-wallet{
-  height: 20px;
-  width: 20px;
+/* ===== Кнопки кошельков ===== */
+.add-wallet-button, .background-wallet {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 2px solid rgb(215, 222, 221);
+    padding: 0 15px;
+    color: rgb(215, 222, 221);
+    cursor: pointer;
+    margin-top: 7%;
+    margin-left: 5%;
 }
 
-.background-wallet{
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 20px;
-
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  border: 2px solid rgb(215, 222, 221);
-  padding: 0 15px;
-  color: rgb(215, 222, 221);
-  cursor: pointer;
-  margin-top: 7%;
-  margin-left: 5%;
+/* ===== Иконки ===== */
+.svg-image-icons-wallet {
+    height: 20px;
+    width: 20px;
 }
 
-.box-wallets{
-  display: flex;
-  justify-content: left;
+.svg-image-dollar {
+    margin-left: 9px;
+    width: 33px;
+    height: 33px;
 }
 
-
-/* ===== Overlay ===== */
-
-.new-wallet-questions-title{
-  width: 100%;
-  font-size: 20px;
-  text-align: center;
-  display: block;
+.svg-image-yuan, .svg-image-rub{
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
 }
 
-.title-new-wallet{
-  font-size: 30px;
-  margin-top: 3%;
+.svg-image-pencil {
+    height: 25px;
+    width: 25px;
 }
 
+.svg-image-icons {
+    margin-left: 9px;
+    height: 20px;
+    width: 20px;
+}
+
+.svg-image-icons-all {
+    height: 20px;
+    width: 20px;
+    margin-top: 25%;
+    margin-left: 25%;
+}
+
+/* ------- Overlay New Wallet ------- */
 .box-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 6%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .background-overlay {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 430px;
-  position: relative;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 430px;
+    position: relative;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
 }
 
 .close {
-  position: absolute;
-  color: rgb(41, 58, 43);
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgb(41, 58, 43);
+}
+
+.new-wallet-questions-title {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+}
+
+.title-new-wallet {
+    font-size: 30px;
+    margin-top: 3%;
 }
 
 .input-name-wallet {
-  width: 100%;
-  padding: 5px 5px 5px 5px;
-  margin-top: 5%;
-  border: 2px solid rgb(41, 58, 43);
-  border-radius: 4px;
+    width: 100%;
+    padding: 5px;
+    margin-top: 5%;
+    border: 2px solid rgb(41, 58, 43);
+    border-radius: 4px;
 }
 
 .add-button {
-  background-color: rgb(41, 58, 43);
-  margin-top: 5%;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgb(41, 58, 43);
+    margin-top: 5%;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-.add-button:hover, .confirm-settings-button:hover {
-  background-color: rgb(64, 127, 138);
+.add-button:hover {
+    background-color: rgb(64, 127, 138);
 }
 
-.svg-image-dollar{
-  margin-left: 9px;
-  width: 33px;
-  height: 33px;
-}
-
-.svg-image-yuan{
-  margin-left: 10px;
-  width: 30px;
-  height: 30px;
-}
-
-.svg-image-rub{
-  margin-left: 10px;
-  width: 30px;
-  height: 30px;
-}
-
-.currency-button{
-  margin-top: 10%;
-  margin: auto;
-  border-radius: 50px;
-  width: 50px;
-  background-color: rgb(41, 58, 43);
-  height: 50px;
-  z-index: 1;
-  cursor: pointer;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.currency-settings{
-  display: flex;
-    width: 100%;
-    justify-content: space-between; 
-    margin-top: 10px; 
-    margin-bottom: 10px; 
+/* ----- Currency Settings */
+.currency-button {
+    margin-top: 10%;
+    margin: auto;
+    border-radius: 50px;
+    width: 50px;
+    background-color: rgb(41, 58, 43);
+    height: 50px;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .currency-button.selected {
@@ -187,111 +173,104 @@
     background-color: rgb(46, 88, 95);
 }
 
-.image-button{
-  margin-top: 10%;
-  margin: auto;
-  border-radius: 40px;
-  width: 40px;
-  background-color: rgb(41, 58, 43);
-  height: 40px;
-  cursor: pointer;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+.currency-settings {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
 }
 
-.svg-image-icons{
-  margin-left: 9px;
-  height: 20px;
-  width: 20px;
+/* ----- Button With Image */
+.image-button {
+    margin-top: 10%;
+    margin: auto;
+    border-radius: 40px;
+    width: 40px;
+    background-color: rgb(41, 58, 43);
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-/* --------overlay-all-wallets-----*/
-
-.title-all-wallets{
-  font-size: 30px;
-  margin-top: 3%;
+/* ------ Overlay List Of Wallets --------*/
+.title-all-wallets {
+    font-size: 30px;
+    margin-top: 3%;
+    font-weight: 500;
 }
 
 .wallet-box {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin: 10px 0;
-  padding: 5px 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 0;
 }
 
-.svg-image-pencil{
-  height: 25px;
-  width: 25px;
+.settings-wallet-button {
+    border-radius: 30px;
+    margin-right: 1%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(41, 58, 43);
+    border-radius: 30px;
+    padding: 5px 15px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.svg-image-icons-all{
-  height: 20px;
-  width: 20px;
-  margin-top: 25%;
-  margin-left: 25%;
+.counter-wallet {
+    font-size: 22px;
+    margin-right: 10px;
+    min-width: 30px;
 }
 
-.settings-wallet-button{
-  border-radius: 30px;
-  margin-right: 1%;
-  display: flex;
-  align-items: center;
-  border: 2px solid rgb(41, 58, 43);
-  border-radius: 30px;
-  padding: 5px 15px;
-  cursor: pointer;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+.wallet-name {
+    font-size: 20px;
+    margin-left: 3%;
+    flex-grow: 1;
 }
 
-.counter-wallet{
-  font-size: 22px;
-  margin-right: 10px;
-  min-width: 30px;
+.image-button-all {
+    margin-top: 10%;
+    margin: auto;
+    border-radius: 40px;
+    width: 40px;
+    background-color: rgb(41, 58, 43);
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.wallet-name{
-  font-size: 20px;
-  margin-left: 3%;
-  flex-grow: 1;
+/* ------ Overlay Wallet Settings --------- */
+.title-wallet-name {
+    font-size: 18px;
+    margin-left: 3%;
+    flex-grow: 1;
 }
 
-.image-button-all{
-  margin-top: 10%;
-  margin: auto;
-  border-radius: 40px;
-  width: 40px;
-  background-color: rgb(41, 58, 43);
-  height: 40px;
-  cursor: pointer;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* --------overlay-settings-wallet-----*/
-
-.title-wallet-name{
-  font-size: 18px;
-  margin-left: 3%;
-  flex-grow: 1;
-}
-
-.title-name-settings{
-  width: 100%;
-  font-size: 20px;
-  text-align: center;
-  display: block;
-  margin-top: 2%;
+.title-name-settings {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    margin-top: 2%;
 }
 
 .confirm-settings-button {
-  background-color: rgb(41, 58, 43);
-  margin-top: 15%;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgb(41, 58, 43);
+    margin-top: 15%;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-settings-button:hover {
+    background-color: rgb(64, 127, 138);
 }
