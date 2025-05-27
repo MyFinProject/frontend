@@ -1,26 +1,30 @@
 <template>
     <div class="background-all">
         <span class="title-wallet">Кошельки и счета</span>
+            <div class="box-wallets">
+                <button 
+                    v-for="(wallet) in wallets.slice(0, 3)" 
+                    :key="wallet.id"
+                    class="background-wallet">
+                    <img 
+                        class="svg-image-icons-wallet" 
+                        :src="wallet.imageAdress"
+                        alt="?">
+                </button>
 
-        <div class="box-wallets">
-             <button 
-                v-for="wallet in wallets" 
-                :key="wallet.id"
-                class="background-wallet">
-                <img 
-                    class="svg-image-icons-wallet" 
-                    :src="wallet.path"
-                    alt="?">
-            </button>
-
-            <button class="add-wallet-button" @click="showModal = true">
-                <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
-            </button>
-        </div>
-
-        <div v-if="showModal" class="box-overlay" @click.self="closeModal">
+                <button 
+                    v-if="wallets.length > 3"
+                    class="more-wallets-button"
+                    @click="showAllWallets = !showAllWallets">
+                   <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="...">
+                </button>
+                <button class="add-wallet-button" @click="showModal = true">
+                    <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
+                </button>
+            </div>
+        <div v-if="showModal" class="box-overlay">
             <div class="background-overlay">
-                <span class="close" @click="closeModal">&times;</span>
+                <span class="close" @click="showModal = false">&times;</span>
                 <span class="title-new-wallet">Добавить новый кошелек</span>
                 <div> 
                     <div>
@@ -71,19 +75,24 @@
 <script>
 import axios from 'axios';
 import { useUserStore } from '@/stores/user';
+import { useWalletStore } from '@/stores/wallet'
 import { storeToRefs } from 'pinia';
+import { mapState } from 'pinia';
 
 export default {
+    computed: {
+        ...mapState(useWalletStore, ['wallets', 'isLoading'])
+    },
     data() {
         return {
             showModal: false,
+            showAllWallets: false,
             walletName: '',
             Picture: '',
             selectedCurrency: null,
             selectedIcon: null,
-            isLoading: false,
-            currencies: [{ symbol: '$', code: 'DOLLAR', path:  new URL('@/assets/icons/icons-wallet-currency/dollar.svg', import.meta.url).href},
-                         { symbol: '¥', code: 'YUAN', path:  new URL('@/assets/icons/icons-wallet-currency/yuan.svg', import.meta.url).href},
+            currencies: [{ symbol: '$', code: 'USD', path:  new URL('@/assets/icons/icons-wallet-currency/dollar.svg', import.meta.url).href},
+                         { symbol: '¥', code: 'CHY', path:  new URL('@/assets/icons/icons-wallet-currency/yuan.svg', import.meta.url).href},
                          { symbol: '₽', code: 'RUB', path:  new URL('@/assets/icons/icons-wallet-currency/rub.svg', import.meta.url).href}],
             icons: [{ id: 1, path: new URL('@/assets/icons/icons-wallet/1.svg', import.meta.url).href},
                     { id: 2, path: new URL('@/assets/icons/icons-wallet/2.svg', import.meta.url).href},
@@ -93,8 +102,6 @@ export default {
                     { id: 6, path: new URL('@/assets/icons/icons-wallet/6.svg', import.meta.url).href},
                     { id: 7, path: new URL('@/assets/icons/icons-wallet/7.svg', import.meta.url).href},
                     { id: 8, path: new URL('@/assets/icons/icons-wallet/8.svg', import.meta.url).href},],
-
-            wallets: [{ id: '', path:   new URL('@/assets/icons/icons-wallet/1.svg', import.meta.url).href}]
         };
     },
     methods: {
@@ -104,53 +111,50 @@ export default {
         selectCurrency(currency) {
             this.selectedCurrency = currency;
         },
-
-        async createWallet(){
-
-            this.isLoading = true;
-            
+        async createWallet() {
             const userStore = useUserStore();
+            const walletStore = useWalletStore();
             const { userId } = storeToRefs(userStore);
+
+            if (!this.selectedCurrency || !this.selectedIcon || !this.walletName.trim()) {
+                alert('Заполните все обязательные поля');
+                return;
+            }
+
             let currencyId = '';
-
+            
             try {
-                const response = await axios.get(`http://26.255.57.122:5260/api/Currency/GetAll`);
-
-                for (const currency of response.data) {
-                    if (currency.code === this.selectedCurrency.code){
-                        currencyId = currency.currencieId;
-                        break;
-                    }
-                }
+                const currencyResponse = await axios.get(`http://26.255.57.122:5260/api/Currency/GetByCode/${this.selectedCurrency.code}`);
+                currencyId = currencyResponse.data;
             }
 
             catch (error) {
                 console.error('Ошибка:', error.message);
             }
 
-
-            try {
-                const response = await axios.post(`http://26.255.57.122:5260/api/wallets/${userId.value}`, {
-                    name: this.walletName,
-                    currencieId: currencyId,
-                    ImageAdress: '123'
-                });
-                
-                this.wallets.push({
-                    id: response.data.WalletId,
-                    path: this.selectedIcon.path
-                });
-            }
-
-            catch(error) {
-                console.error('Ошибка добавления кошелька:', error.message);
-            }
-
-
+            await walletStore.addWallet(userStore.userId, {
+                name: this.walletName.trim(),
+                currencieId: currencyId,
+                ImageAdress: this.selectedIcon.path
+            });
+            
+            await walletStore.fetchWallets(userStore.userId);
+            
+            this.walletName = '';
+            this.selectedCurrency = null;
+            this.selectedIcon = null;
+            
+            this.showModal = false;
         },
-
         closeModal() {
             this.showModal = false;
+        }
+    },
+    async mounted(){
+        const userStore = useUserStore()
+        const walletStore = useWalletStore()
+        if (userStore.userId) {
+            await walletStore.fetchWallets(userStore.userId);
         }
     }
 };
@@ -158,4 +162,4 @@ export default {
 
 <style scoped>
 @import './wallet-personal-account.css';
-</style>
+</style> 
