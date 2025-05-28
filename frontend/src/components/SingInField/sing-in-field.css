@@ -1,86 +1,19 @@
+/* ------- Text Elements --------- */
+.MyFin,
+.input-row-label,
+.question,
+.error-message {
+  color: rgb(215, 222, 221);
+  font-weight: bold;
+}
+
 .MyFin {
   position: absolute;
   top: 30px;
-  left:30px;
+  left: 30px;
   padding: 8px 16px;
-  color: rgb(215, 222, 221);
   font-size: 30px;
-  font-weight: bold;
   transition: all 0.3s ease;
-}
-
-.input-row {
-  background-color: rgb(215, 222, 221);
-  margin: 0% auto;
-  width: 100%;
-  max-width: 400px;
-  font-size: 25px;
-  border-radius: 5px;
-  padding: 5px;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.input-row-label {
-  padding-top: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(215, 222, 221);
-}
-
-.centered-row {
-  display: flex;
-  justify-content: center; 
-  gap: 15px;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.question{
-  padding: 8px 16px;
-  color: rgb(215, 222, 221);
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.log-in-button, .back-button, .sing-in-end{
-  border-radius: 10px;
-  border: 2px solid rgb(215, 222, 221);
-  color: rgb(215, 222, 221);
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.log-in-button{
-  margin: 0% auto;
-  padding: 10px;
-  font-size: 20px;
-}
-
-.back-button{
-  position: absolute;
-  top: 30px;
-  right:30px;
-  padding: 8px 16px;
-  font-size: 20px;
-}
-
-.sing-in-end{
-  margin: 0% auto;
-  padding: 10px;
-  font-size: 25px;
-}
-
-.log-in-button:hover, .back-button:hover, .sing-in-end:hover{
-  color: #ffffff;
-  cursor: pointer;
-  transform: translateY(-2px);
-  background-color: rgba(215, 222, 221, 0.1);
-  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .MyFin:hover {
@@ -89,8 +22,83 @@
   cursor: pointer;
 }
 
+.input-row-label {
+  padding-top: 10%;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question {
+  padding: 8px 16px;
+  font-size: 22px;
+}
+
 .error-message {
-  color: rgb(215, 222, 221);
   font-size: 20px;
-  margin: 0% auto;
+  margin: 0 auto;
+}
+
+/* ----------- Form Elements --------- */
+.input-row {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 25px;
+  background-color: rgb(215, 222, 221);
+  border-radius: 5px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.centered-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ---------- Button Styles -------- */
+.log-in-button,
+.back-button,
+.sing-in-end {
+  border: 2px solid rgb(215, 222, 221);
+  border-radius: 10px;
+  color: rgb(215, 222, 221);
+  font-weight: bold;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.log-in-button:hover,
+.back-button:hover,
+.sing-in-end:hover {
+  color: #ffffff;
+  cursor: pointer;
+  transform: translateY(-2px);
+  background-color: rgba(215, 222, 221, 0.1);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.log-in-button {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 8px 16px;
+  font-size: 20px;
+}
+
+.sing-in-end {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 25px;
 }
