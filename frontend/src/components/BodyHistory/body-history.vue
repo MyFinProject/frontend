@@ -78,7 +78,6 @@ export default {
       }
     },
     addIncome() {
-      
       this.showIncomeOverlay = false;
       this.incomeAmount = 0;
     },

@@ -22,20 +22,12 @@
                 <button class="add-wallet-button" @click="showModal = true">
                     <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
                 </button>
+                
+                <button class="add-wallet-button" @click="showOverlay = true">
+                    <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
+                </button>
             </div>
-<<<<<<< HEAD
-        <div v-if="showModal" class="box-overlay">
-            <div class="background-overlay">
-                <span class="close" @click="showModal = false">&times;</span>
-=======
 
-            <button class="add-wallet-button" @click="showOverlay = true">
-                <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
-            </button>
-
-            <button class="add-wallet-button" @click="showOverlayAll = true">
-                <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
-            </button>
         </div>
 
         <div v-if="showOverlayAll" class="box-overlay" @click.self="closeOverlayAll">
@@ -81,7 +73,6 @@
         <div v-if="showOverlay" class="box-overlay" @click.self="closeOverlay">
             <div class="background-overlay">
                 <span class="close" @click="closeOverlay">&times;</span>
->>>>>>> 3fe98730bfe2d5b85ecacf54798cdd4b488b98bc
                 <span class="title-new-wallet">Добавить новый кошелек</span>
                 <div> 
                     <div>
@@ -126,7 +117,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -141,7 +131,6 @@ export default {
     },
     data() {
         return {
-<<<<<<< HEAD
             showModal: false,
             showAllWallets: false,
             walletName: '',
@@ -160,17 +149,9 @@ export default {
                     { id: 6, path: new URL('@/assets/icons/icons-wallet/6.svg', import.meta.url).href},
                     { id: 7, path: new URL('@/assets/icons/icons-wallet/7.svg', import.meta.url).href},
                     { id: 8, path: new URL('@/assets/icons/icons-wallet/8.svg', import.meta.url).href},],
-        };
-    },
-    methods: {
-        selectIcon(icon) {
-            this.selectedIcon = icon;
-=======
             showOverlay: false,
             showOverlayAll: false,
             showOverlaySettings: false,
-            walletName: 'asasdafd',
-            selectedCurrency: '',
             Picture: '',
             items: [{ 
                 categoryName: '', 
@@ -179,14 +160,17 @@ export default {
         };
     },
     methods: {
+       
+    },
+    methods: {
         Addqwe(index){
             this.items.push({ 
                 categoryName: '', 
                 limit: '' 
             });
         },
-        selectIcon(iconName) {
-            this.Picture = iconName;
+        selectIcon(icon) {
+            this.selectedIcon = icon;
         },
         closeOverlay() {
             this.showOverlay = false;
@@ -200,7 +184,6 @@ export default {
         },
         closeOverlaySettings() {
             this.showOverlaySettings = false;
->>>>>>> 3fe98730bfe2d5b85ecacf54798cdd4b488b98bc
         },
         selectCurrency(currency) {
             this.selectedCurrency = currency;
