@@ -15,7 +15,7 @@
         <span class="question-title">Введите сумму:</span>
         <input class="input-imcome-exp" type="text" placeholder="Введите сумму" v-model="incomeAmount" required>
         <span class="question-title">Введите описание:</span>
-        <input class="input-imcome-exp" type="text" placeholder="Введите описание" v-model="discription" required>
+        <input class="input-imcome-exp" type="text" placeholder="Введите описание" v-model="description" required>
         <button class="end-overlay-button" @click="addIncome">Добавить</button>
       </div>
     </div>
@@ -27,7 +27,7 @@
         <span class="question-title">Введите сумму:</span>
         <input class="input-imcome-exp" type="text" placeholder="Введите сумму" v-model="expenseAmount" required>
         <span class="question-title">Введите описание:</span>
-        <input class="input-imcome-exp" type="text" placeholder="Введите описание" v-model="discription" required>
+        <input class="input-imcome-exp" type="text" placeholder="Введите описание" v-model="description" required>
         <button class="end-overlay-button" @click="addExpense">Добавить</button>
       </div>
     </div>
@@ -47,39 +47,83 @@
 
 <script>
 import axios from 'axios';
+import { useUserStore } from '@/stores/user';
+import { useWalletStore } from '@/stores/wallet'
+
 export default {
   data() {
     return {
-      BalanceValue: 0,
+      incomeAmount: 0,
+      expenseAmount: 0,
+      BalanceValue: null,
+      selectedFile: null,
       NameWallet: '',
-      walletId: null,
+      currencyId: '',
+      walletId: '',
+      description: '',
+      categoryId: '',
+      categoryName: 'Undefined',
       showIncomeOverlay: false,
       showExpenseOverlay: false,
       showChequeOverlay: false,
-      incomeAmount: 0,
-      expenseAmount: 0,
-      discription: '',
-      selectedFile: null
+      expensecategories: []
     }
   },
   created() {
     this.walletId = this.$route.params.walletId;
+
     this.loadWalletData();
   },
   methods: {
+
     async loadWalletData() {
       try {
         const response = await axios.get(`http://26.255.57.122:5260/api/wallets/${this.walletId}`);
-        console.log(response.data)
         this.NameWallet = response.data.name;
         this.BalanceValue = response.data.balance;
+        this.currencyId = response.data.currencieId;
       } catch (error) {
         console.error("Ошибка загрузки:", error);
       }
     },
-    addIncome() {
-      this.showIncomeOverlay = false;
-      this.incomeAmount = 0;
+    
+    async addIncome() {
+       
+      try {
+        const categoryResponse = await axios.get(`http://26.255.57.122:5260/api/category/GetAll`)
+        this.categoryName = categoryResponse.data[1].name
+        const categoryResponse2 = await axios.get(`http://26.255.57.122:5260/api/category/GetIdByName/${this.categoryName}`)
+        this.categoryId = categoryResponse2.data
+
+        this.incomeAmount = parseFloat(this.incomeAmount)
+
+        if (this.incomeAmount < 0) {
+          alert('Сумма не может быть отрицательной');
+          return;
+        }
+
+        const response = await axios.post(`http://26.255.57.122:5260/api/Transaction`, {
+          walletId: this.walletId,
+          typeOperation: 1,
+          amount: this.incomeAmount,
+          categoryId: this.categoryId,
+          currencieId: this.currencyId,
+          description: this.description
+        })
+
+      } catch (error) {
+          console.error("Детали ошибки:", {
+          status: error.response?.status,
+          data: error.response?.data,
+          config: error.config?.url
+        });
+      }
+      finally {
+        this.showIncomeOverlay = false;
+        this.incomeAmount = 0;
+        this.description = '';
+      }
+
     },
     handleFileUpload(event) {
       this.selectedFile = event.target.files[0];

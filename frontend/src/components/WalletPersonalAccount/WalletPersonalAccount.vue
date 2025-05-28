@@ -27,7 +27,6 @@
                     <img class="svg-image-icons-wallet" src="@/assets/icons/+.svg" alt="+">
                 </button>
             </div>
-
         </div>
 
         <div v-if="showOverlayAll" class="box-overlay" @click.self="closeOverlayAll">
