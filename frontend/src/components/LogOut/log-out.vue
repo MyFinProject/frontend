@@ -14,6 +14,7 @@
 
 <script>
 import { useUserStore } from '@/stores/user';
+import axios from 'axios';
 
 export default {
     methods: {
@@ -21,6 +22,7 @@ export default {
             
             try {
                 const userStore = useUserStore();
+                const response = await axios.post(`http://26.255.57.122:5260/api/controller/Logout`);
                 userStore.logout();
                 this.$router.push('/'); 
             } 

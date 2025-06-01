@@ -23,7 +23,7 @@
 
     width: var(--balance-card-width);
     height: var(--balance-card-height);
-    min-width: 400px;
+    min-width: 200px;
     
     border-radius: 10px;
     background-color: rgb(215, 222, 221);

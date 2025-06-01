@@ -6,6 +6,7 @@
     <input v-model="email" class="input-row" type="text" placeholder="Введите почту">
     <div v-if="error" class="error-message">{{ error }}</div>
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
+    <input v-model="secondPassword" class="input-row" type="password" placeholder="Повторите пароль">
     <button class="sing-in-end" @click="register">Завершить регистрацию</button>
     <div class="centered-row">
         <span class="question">Есть аккаунт? →</span>
@@ -24,16 +25,26 @@ export default {
             username: '',
             email: '',
             password: '',
+            secondPassword: '',
             error: '',
-            isLoading: false,
         }
     },
     methods: {
-        validatePassword() {
+        samePasswords(){
+            if (this.password == this.secondPassword){
+                return true;
+            }
+
+            this.error = "Пароли не совападают"
+            return false;
+        },
+        validMail(){},
+        validPassword() {
             if (this.password.length < 8) {
                 this.error = 'Пароль должен содержать минимум 8 символов';
                 return false;
             }
+
             if (!/\d/.test(this.password)) {
                 this.error = 'Пароль должен содержать хотя бы одну цифру';
                 return false;
@@ -53,11 +64,12 @@ export default {
             return true;
         },
         async register() {
-            if (!this.validatePassword()) {
+            if (!this.validPassword()) {
                 return; 
             }
-            
-            this.isLoading = true;
+            if(!this.samePasswords()){
+                return;
+            }
 
             try {
                 const userStore = useUserStore();
@@ -75,7 +87,7 @@ export default {
                         password: this.password.trim()
                     });
 
-                    const userTokenResponse = (await axios.get(`http://26.255.57.122:5260/api/controller/decode/${response.data.token}`));
+                    const userTokenResponse = await axios.get(`http://26.255.57.122:5260/api/controller/GetId`);
 
                     userStore.login({
                         username: this.username.trim(),
@@ -93,10 +105,6 @@ export default {
                 console.error('Ошибка:', error.message);
                 this.error = 'Ошибка при отправке запроса';
             } 
-
-            finally {
-                this.isLoading = false;
-            }
         }
     }
 }

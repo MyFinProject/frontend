@@ -2,7 +2,6 @@
   <div class="top-menu">
     <button class="logo" @click="$router.push('/')">MyFin</button>
     <div class="right-buttons">
-      <button class="history" @click="$router.push('/History')">История операций</button>
       <button class="exit-button" @click="$router.push('/LogOut')">Выйти</button>
     </div>
   </div>  

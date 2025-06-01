@@ -34,8 +34,7 @@
 }
 
 /* -------- Buttons Styles ---------*/
-.exit-button,
-.history {
+.exit-button {
   height: 50px;
   margin-right: 20px;
   padding: 0 15px;
@@ -50,8 +49,7 @@
   transition: all 0.3s ease;
 }
 
-.exit-button:hover,
-.history:hover {
+.exit-button:hover {
   color: #ffffff;
   cursor: pointer;
   transform: translateY(-2px);

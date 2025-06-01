@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory} from 'vue-router'
 import { createPinia, storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.js';
+import axios from 'axios'
 
 import PersonalAccount from './pages/PersonalAccount/personal-account.vue'
 import MainPage from './pages/MainPage/main-page.vue'
@@ -14,6 +15,8 @@ import SingIn from './pages/SingIn/SingIn.vue'
 import App from './App.vue'
 
 const app = createApp(App)
+
+axios.defaults.withCredentials = true;
 
 const routes = [
     {path: '/', name: 'Main page', component: MainPage, meta: { requiresGuest: true }},

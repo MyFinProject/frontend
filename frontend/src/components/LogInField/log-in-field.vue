@@ -43,7 +43,7 @@ export default {
                         password: this.password.trim()
                     });
                     
-                    const userTokenResponse = (await axios.get(`http://26.255.57.122:5260/api/controller/decode/${response.data.token}`));
+                    const userTokenResponse = (await axios.get(`http://26.255.57.122:5260/api/controller/GetId`));
                     this.email = response.data.email;
                     
                     userStore.login ({

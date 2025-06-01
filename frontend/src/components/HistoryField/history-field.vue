@@ -21,10 +21,8 @@ components: {
 },
 data() {
     return {
-
-    expenses: 195.5,
-    income:  200.0
-    
+        expenses: 195.5,
+        income:  200.0
     }
 },
 
