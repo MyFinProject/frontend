@@ -30,11 +30,26 @@
   text-align: center;
 }
 
+.create-budget-overlay-title{
+  color: rgb(58, 58, 58);
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 18%;
+}
+
 .counter-goals {
   color: rgb(58, 58, 58);
   font-size: 20px;
   font-weight: bold;
   padding-left: 10px;
+}
+
+.new-wallet-questions-title{
+  margin: 10px;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  display: block;
 }
 
 .questions-editing {
@@ -44,13 +59,58 @@
   display: block;
 }
 
+.currency-settings{
+  display: flex;
+  width: 80%;
+  justify-content: space-between; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  margin: auto;
+}
+
+.currency-button{
+  margin-top: 10%;
+  margin: auto;
+  border-radius: 50px;
+  width: 45px;
+  background-color: rgb(41, 58, 43);
+  height: 45px;
+  z-index: 1;
+  cursor: pointer;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.currency-button:hover {
+  background-color: rgb(46, 88, 95);
+  transform: translateY(-3px);
+}
+
+.currency-button.selected-currency{
+  background-color: rgb(64, 127, 138);
+  transition: all 0.3s ease;
+}
+
+.input-name-wallet {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  border: 2px solid rgb(41, 58, 43);
+  border-radius: 4px;
+}
+
+.svg-image-currency{
+  margin-left: 9px;
+  width: 27px;
+  height: 27px;
+}
+
 /* ------ Container Styles ------*/
 .goal-container {
   width: 100%;
   min-height: 50px;
   display: flex;
   align-items: center;
-  gap: 10px;
   border-radius: 5px;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
@@ -59,7 +119,7 @@
 .button-add,
 .save-button,
 .delete-button {
-  padding: 10px 15px;
+  padding: 10px 20px;
   color: rgb(58, 58, 58);
   font-weight: bold;
   cursor: pointer;
@@ -67,12 +127,16 @@
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
+.save-button{
+  margin-left: 36%;
+}
+
 .button-add {
   display: flex;
   justify-content: center;
-  width: 200px;
+  width: 280px;
   margin: 10px auto;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .save-button,
@@ -83,6 +147,8 @@
 }
 
 .settings-wallet-button {
+  width: 60px;
+  height: 30px;
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -90,6 +156,20 @@
   cursor: pointer;
   border: 2px solid rgb(41, 58, 43);
   border-radius: 30px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-button {
+  background-color: rgb(41, 58, 43);
+  margin-top: 5%;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* ------ Form Elements ------ */
@@ -126,6 +206,8 @@
 
 .close {
   position: absolute;
+  font-size: 28px;
+  padding: 5px 10px;
   top: 10px;
   right: 15px;
   color: rgb(41, 58, 43);
@@ -140,18 +222,27 @@
 }
 
 /* ---- Utility Classes ------ */
-.save-delete-box {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
 .svg-image-pencil {
   width: 25px;
   height: 25px;
 }
 
-.limit {
-  margin-right: 1%;
+.svg-trash {
+    height: 25px;
+    width: 25px;
 }
+
+.limit {
+  margin-right: 10px;
+}
+
+/* ---- Other ------ */
+.input-income-exp {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid rgb(41, 58, 43);
+    border-radius: 4px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 3%;
+}
+

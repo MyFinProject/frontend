@@ -4,8 +4,7 @@ import axios from 'axios'
 export const useWalletStore = defineStore('wallets', {
     state: () => ({
         wallets: [],
-        isLoading: false,
-        needBalanceUpdate: false
+        isLoading: false
     }),
     actions:{
         async fetchWallets(userId){

@@ -34,7 +34,7 @@
               :key="category.id"
               :value="category.name">
             {{ category.name }}
-        </option>
+          </option>
         </select>
         <button class="end-overlay-button" @click="addExpense">Добавить</button>
       </div>
@@ -71,14 +71,12 @@
 
 <script>
 import axios from 'axios';
-import { useUserStore } from '@/stores/user';
-import { useWalletStore } from '@/stores/wallet'
 
 export default {
   data() {
     return {
-      incomeAmount: 0,
-      expenseAmount: 0,
+      incomeAmount: null,
+      expenseAmount: null,
       BalanceValue: null,
       selectedFile: null,
       selectedCategory: null,

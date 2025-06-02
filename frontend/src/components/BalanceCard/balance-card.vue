@@ -90,9 +90,8 @@ export default {
         const walletStore = useWalletStore()
 
         if (this.dollarRate === 1) {
-          const responseDollar = await axios.get(`http://26.255.57.122:5260/api/Currency/GetAll`);
-          console.log(responseDollar.data)
-          this.dollarRate = responseDollar.data.rate;
+          const responseDollar = await axios.get(`http://26.255.57.122:5260/api/Currency/GetRateByCode/${'USD'}`);
+          this.dollarRate = responseDollar.data;
         }
 
         if (userStore.userId) {
