@@ -103,7 +103,15 @@ export default {
             
             catch (error) {
                 console.error('Ошибка:', error.message);
-                this.error = 'Ошибка при отправке запроса';
+                console.log(error.message)
+                if (error.message == 'Request failed with status code 501'){
+                    this.error = 'Пользователь с таким логином уже существует'; 
+                } else if (error.message == 'Request failed with status code 503'){
+                    this.error = 'Пользователь с такой почтой уже существует';
+                }
+                else {
+                    this.error = 'Ошибка при отправке запроса';
+                }
             } 
         }
     }

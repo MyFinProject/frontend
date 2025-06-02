@@ -51,6 +51,22 @@
       </div>
     </div>
   </div>
+
+  <div class="page-container">
+    <div class="history-title">
+        <span>История WIP</span>
+    </div>
+    <div class="myhistory">
+      <div class="myhistory-element">
+        <span class="date"> date </span>
+          <div class="category-value-row">
+            <span class="category">category</span>
+            <span class="value">value</span>
+          </div>
+      </div>
+    </div>
+  </div>
+  
 </template>
 
 <script>

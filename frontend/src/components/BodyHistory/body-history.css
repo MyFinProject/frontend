@@ -144,6 +144,55 @@
 select.input-income-exp option:disabled {
   color: #95a5a6;
 }
+
 select.input-imcome-exp option {
   color: #ecf0f1;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 65vh;
+    margin-top: -30px;
+}
+
+.history-title {
+    color: rgb(230, 226, 226);
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.myhistory {
+    flex-grow: 1;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(215, 222, 221);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    overflow-y: auto;
+}
+.myhistory-element{
+    width: 100%;
+    background-color: rgba(187, 187, 187, 0.5);
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+.category-value-row {
+    display: flex;     
+    justify-content: space-between;
+    width: 100%;
+    padding: 7px 10px;
+}
+.date {
+    color: rgb(45, 31, 31);
+    font-size: 24px;
+    padding: 0 10px;
+}
+
+.value, .category {
+    color: rgb(71, 62, 62);
+    font-size: 18px;
 }
