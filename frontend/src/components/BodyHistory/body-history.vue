@@ -1,7 +1,7 @@
 <template>
   <div class="balance-back">
     <span class="wallet-elements">Название счета: {{ NameWallet }}</span>
-    <span class="wallet-elements">Баланс: {{ BalanceValue }}</span>
+    <span class="wallet-elements">Баланс: {{ BalanceValue }} {{ currencySymbol }}</span>
     <div class="button-page-box">
       <button class="operations-button" @click="showIncomeOverlay = true">Добавить доходы</button>
       <button class="operations-button" @click="showExpenseOverlay = true">Добавить расходы</button>
@@ -88,7 +88,14 @@ export default {
       showIncomeOverlay: false,
       showExpenseOverlay: false,
       showChequeOverlay: false,
-      categories: [{name: '', icon: ''}]
+      categories: [{name: '', icon: ''}],
+      currencySymbol: '',
+      currencySymbols: {
+        USD: '$',
+        RUB: '₽',
+        EUR: '€',
+        CNY: '¥',
+      }
     }
   },
   
@@ -99,8 +106,21 @@ export default {
         this.NameWallet = response.data.name;
         this.BalanceValue = response.data.balance;
         this.currencyId = response.data.currencieId;
+        await this.loadCurrencySymbol();
       } catch (error) {
         console.error("Ошибка загрузки кошелька:", error);
+      }
+    },
+
+    async loadCurrencySymbol() {
+      try {        
+        const response = await axios.get(`http://26.255.57.122:5260/api/Currency/GetById/${this.currencyId}`);
+        
+        const currencyCode = response.data.code;
+        this.currencySymbol = this.currencySymbols[currencyCode] || currencyCode; 
+      } catch (error) {
+        console.error("Ошибка загрузки символа валюты: ", error);
+        this.currencySymbol = '';
       }
     },
     

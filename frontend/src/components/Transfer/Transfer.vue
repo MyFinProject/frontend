@@ -131,6 +131,11 @@ export default {
       const userStore = useUserStore();
       const budgetStore = useBudgetStore();
 
+      if (this.budgets[this.editedIndex].currencyId < 0) {
+          alert('Сумма не может быть отрицательной');
+          return;
+      }
+
       const data = {
         userId: userStore.userId,
         categoryId: this.budgets[this.editedIndex].categoryId,
@@ -161,6 +166,11 @@ export default {
         return;
       }
       
+      if (this.limit < 0) {
+          alert('Сумма не может быть отрицательной');
+          return;
+      }
+
       const [currencyResponse, categoryResponse] = await Promise.all([
         axios.get(`http://26.255.57.122:5260/api/Currency/GetByCode/${this.selectedCurrency.code}`),
         axios.get(`http://26.255.57.122:5260/api/category/GetIdByName/${this.selectedCategory.name}`)
