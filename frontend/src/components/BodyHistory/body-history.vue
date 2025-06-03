@@ -54,7 +54,7 @@
 
   <div class="page-container">
     <div class="history-title">
-        <span>История WIP</span>
+        <span>История операций</span>
     </div>
 
     <div class="myhistory">
