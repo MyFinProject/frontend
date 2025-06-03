@@ -7,11 +7,22 @@
     <div v-if="error" class="error-message">{{ error }}</div>
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
     <input v-model="secondPassword" class="input-row" type="password" placeholder="Повторите пароль">
-    <button class="sing-in-end" @click="register">Завершить регистрацию</button>
+    <button class="sing-in-end" @click="checkData()">Зарегистрироваться</button>
     <div class="centered-row">
         <span class="question">Есть аккаунт? →</span>
         <button class="log-in-button" @click="$router.push('/LogIn')">Войти</button>
     </div>
+
+    <div v-if="showOverlay" class="overlay-box">
+        <div class="overlay-background">
+          <span class="close" @click="closeOverlay">&times;</span>
+            <span class="category-name-overlay">Подтверждение почты</span>
+            <span class="questions-editing">Введите код:</span>
+            <input v-model="code" class="edit-input" placeholder="код">
+            <button class="submit-button" @click="register()">Отправить</button>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -27,9 +38,17 @@ export default {
             password: '',
             secondPassword: '',
             error: '',
+            code: '',
+            showOverlay: false
         }
     },
     methods: {
+        openOverlay(){
+            this.showOverlay = true;
+        },
+        closeOverlay(){
+            this.showOverlay = false;
+        },
         samePasswords(){
             if (this.password == this.secondPassword){
                 return true;
@@ -38,7 +57,6 @@ export default {
             this.error = "Пароли не совападают"
             return false;
         },
-        validMail(){},
         validPassword() {
             if (this.password.length < 8) {
                 this.error = 'Пароль должен содержать минимум 8 символов';
@@ -63,13 +81,23 @@ export default {
             this.error = '';
             return true;
         },
-        async register() {
+        
+        async checkData(){
             if (!this.validPassword()) {
                 return; 
             }
             if(!this.samePasswords()){
                 return;
             }
+
+            const mailResponse = await axios.post(`http://26.255.57.122:5260/api/controller/SendCode/${this.email}`)
+            console.log(mailResponse.data)
+            this.openOverlay();
+        },
+
+        async register() {
+
+            console.log(this.code)
 
             try {
                 const userStore = useUserStore();
@@ -100,7 +128,7 @@ export default {
                     this.$router.push('/PersonalAccount'); 
                 }
             } 
-            
+        
             catch (error) {
                 console.error('Ошибка:', error.message);
                 console.log(error.message)
@@ -112,7 +140,9 @@ export default {
                 else {
                     this.error = 'Ошибка при отправке запроса';
                 }
-            } 
+            }
+
+            this.closeOverlay()
         }
     }
 }

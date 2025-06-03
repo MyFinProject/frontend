@@ -70,8 +70,6 @@
             <button class="save-button" @click="changeBudget()">Сохранить</button>
         </div>
       </div>
-
-
     </div>
 </template>
 

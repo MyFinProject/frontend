@@ -112,6 +112,14 @@
     margin: 3% auto 0;
 }
 
+.income {
+  color: #2ecc71;
+}
+
+.expense {
+  color: #e74c3c;
+}
+
 .input-income-exp,
 .custom-file-label {
     width: 100%;
@@ -179,6 +187,11 @@ select.input-imcome-exp option {
     border-radius: 10px;
     margin-top: 10px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+.empty-history {
+  text-align: center;
+  padding: 20px;
+  color: #888;
 }
 .category-value-row {
     display: flex;     

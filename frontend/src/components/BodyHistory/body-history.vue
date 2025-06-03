@@ -56,23 +56,40 @@
     <div class="history-title">
         <span>История WIP</span>
     </div>
+
     <div class="myhistory">
-      <div class="myhistory-element">
-        <span class="date"> date </span>
-          <div class="category-value-row">
-            <span class="category">category</span>
-            <span class="value">value</span>
-          </div>
+      <div v-if="history.length === 0" class="empty-history">
+        <span>Нет операций</span>
+      </div>
+
+      <div v-for="transaction in history" :key="transaction.id" class="myhistory-element">
+        <span class="date"> {{ formatDate(transaction.date) }} </span>
+        <div class="category-value-row">
+          <span class="category">{{ getCategoryName(transaction.categoryId) }}</span>
+          <span :class="{
+            'value': true,
+            'income': transaction.typeOperation === 1,
+            'expense': transaction.typeOperation === 3
+          }">
+          {{ transaction.typeOperation === 1 ? '+' : '-' }} {{ transaction.amount }} {{ currencySymbol }}
+          </span>
+        </div>
       </div>
     </div>
-  </div>
   
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { useUserStore } from '@/stores/user';
+import { useHistoryStore } from '@/stores/history';
+import { mapState, mapActions } from 'pinia';
 
 export default {
+  computed: {
+    ...mapState(useHistoryStore, ['history'])
+  },
   data() {
     return {
       incomeAmount: null,
@@ -124,6 +141,15 @@ export default {
       }
     },
     
+    async loadHistory(){
+      try {
+        const historyStore = useHistoryStore();
+        await historyStore.fetchHistory(this.walletId);
+      } catch (error) {
+        console.error('Ошибка загрузки истории:', error);
+      }
+    },
+
     async loadCategories(){
       try {
         const response = await axios.get(`http://26.255.57.122:5260/api/category/GetAll`)
@@ -163,6 +189,7 @@ export default {
         this.incomeAmount = 0;
         this.description = '';
         this.selectedCategory = '';
+        await this.loadHistory();
       }
     },
 
@@ -196,26 +223,65 @@ export default {
         this.expenseAmount = 0;
         this.description = '';
         this.selectedCategory = '';
+        await this.loadHistory();
       }
     },
 
+    async addCheque() {
+      // const apiKey = '15c5acf8fd878311ecfc74e2727d0b5a'
+
+      // if (!this.selectedFile) {
+      //  return;
+      // }
+
+      // try {
+      //   const formData = new FormData();
+      //   formData.append('key', apiKey);
+      //   formData.append('image', this.selectedFile);
+            
+      //   const response = await axios.post('https://api.imgbb.com/1/upload', formData, {headers: {'Content-Type': 'multipart/form-data'}});
+        
+      //   const imageUrl = response.data.data.url;
+      //   console.log('URL изображения: ', imageUrl);
+
+      //   // await axios.post(`http://26.255.57.122:5260/api/attachment/CreateTransForAttachment/${this.walletId}`, {
+      //   //   filePath: base64Photo
+      //   // })
+
+      // } catch (error) {
+      //    console.log ('Ошибка загрузки чека:', error);
+      // }
+
+      // this.showChequeOverlay = false;
+      // this.selectedFile = null;
+    },
+    
     handleFileUpload(event) {
       this.selectedFile = event.target.files[0];
     },
-    
-    addCheque() {
-      if (this.selectedFile) {
-        console.log('Файл для загрузки:', this.selectedFile);
-      }
-      this.showChequeOverlay = false;
-      this.selectedFile = null;
-    }
+
+    formatDate(dateString) {
+      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+      return new Date(dateString).toLocaleDateString('ru-RU', options);
+    },
+
+    async getCategoryName(categoryId) {
+      const category = this.categories.find(cat => cat.id === categoryId);
+      return category ? category.name : 'Неизвестно';
+
+      // async getCategoryName(categoryId) {
+      // const category = await axios.get(`http://26.255.57.122:5260/api/category/${categoryId}`);
+      // const categoryName = category.data.name
+      // console.log(category.data.name)
+      // return categoryName;
+    },
   },
 
   async mounted() {
     this.walletId = this.$route.params.walletId;
     this.loadWalletData();
-    this.loadCategories()
+    this.loadCategories();
+    await this.loadHistory();
   }
 
 }

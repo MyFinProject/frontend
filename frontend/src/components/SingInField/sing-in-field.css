@@ -7,6 +7,23 @@
   font-weight: bold;
 }
 
+.category-name-overlay {
+  width: 100%;
+  margin-left: 20%;
+  padding: 8px 20px;
+  color: rgb(58, 58, 58);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.questions-editing {
+  width: 100%;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+  display: block;
+}
+
 .MyFin {
   position: absolute;
   top: 30px;
@@ -61,6 +78,55 @@
   margin: 0 auto;
 }
 
+.edit-input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 30px;
+  border: 2px solid rgb(41, 58, 43);
+  border-radius: 4px;
+}
+
+/* ------ Overlay Styles ------ */
+.overlay-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 45px;
+  z-index: 1;
+}
+
+.overlay-background {
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  font-size: 28px;
+  padding: 5px 10px;
+  top: 10px;
+  right: 15px;
+  color: rgb(41, 58, 43);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.close:hover {
+  color: black;
+}
+
 /* ---------- Button Styles -------- */
 .log-in-button,
 .back-button,
@@ -101,4 +167,21 @@
   margin: 0 auto;
   padding: 10px;
   font-size: 25px;
+}
+
+.submit-button {
+  background-color: rgb(41, 58, 43);
+  margin-top: 5%;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:hover {
+  background-color: rgb(64, 127, 138);
 }
