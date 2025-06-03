@@ -7,7 +7,7 @@
     <div v-if="error" class="error-message">{{ error }}</div>
     <input v-model="password" class="input-row" type="password" placeholder="Введите пароль">
     <input v-model="secondPassword" class="input-row" type="password" placeholder="Повторите пароль">
-    <button class="sing-in-end" @click="checkData()">Зарегистрироваться</button>
+    <button class="sing-in-end" @click="register()">Зарегистрироваться</button>
     <div class="centered-row">
         <span class="question">Есть аккаунт? →</span>
         <button class="log-in-button" @click="$router.push('/LogIn')">Войти</button>
@@ -19,7 +19,7 @@
             <span class="category-name-overlay">Подтверждение почты</span>
             <span class="questions-editing">Введите код:</span>
             <input v-model="code" class="edit-input" placeholder="код">
-            <button class="submit-button" @click="register()">Отправить</button>
+            <button class="submit-button" @click="verifyData()">Отправить</button>
         </div>
     </div>
 
@@ -39,7 +39,8 @@ export default {
             secondPassword: '',
             error: '',
             code: '',
-            showOverlay: false
+            showOverlay: false,
+            codeVerify: false
         }
     },
     methods: {
@@ -48,6 +49,13 @@ export default {
         },
         closeOverlay(){
             this.showOverlay = false;
+            if(this.codeVerify) {
+                this.$router.push('/PersonalAccount');
+            }
+            else
+            { 
+                this.deleteUser()
+            }
         },
         samePasswords(){
             if (this.password == this.secondPassword){
@@ -81,6 +89,37 @@ export default {
             this.error = '';
             return true;
         },
+
+        async deleteUser() {
+            try{
+                await axios.delete(`http://26.255.57.122:5260/api/controller/Delete/${this.email}`)
+            }catch(error){
+                console.log(error.message)
+            }
+        },
+
+        async verifyData() {
+            try{
+                const userStore = useUserStore();
+                await axios.post(`http://26.255.57.122:5260/api/controller/VerifyCode/${this.email}/${this.code}`)
+                const userTokenResponse = await axios.get(`http://26.255.57.122:5260/api/controller/GetId`);
+                userStore.login({
+                        username: this.username.trim(),
+                        email: this.email.trim(),
+                        userId: userTokenResponse.data,
+                        isAuthenticated: true
+                    });  
+            }
+            catch(error){
+                if (error.message == 'Invalid code'){
+                    this.error = 'Код неверен'; 
+                }
+                return
+            }
+            console.log('Успешная регистрация!');
+            this.codeVerify = true
+            this.closeOverlay()
+        },
         
         async checkData(){
             if (!this.validPassword()) {
@@ -90,8 +129,7 @@ export default {
                 return;
             }
 
-            const mailResponse = await axios.post(`http://26.255.57.122:5260/api/controller/SendCode/${this.email}`)
-            console.log(mailResponse.data)
+            await axios.post(`http://26.255.57.122:5260/api/controller/SendCode/${this.email}`)
             this.openOverlay();
         },
 
@@ -115,23 +153,11 @@ export default {
                         password: this.password.trim()
                     });
 
-                    const userTokenResponse = await axios.get(`http://26.255.57.122:5260/api/controller/GetId`);
-
-                    userStore.login({
-                        username: this.username.trim(),
-                        email: this.email.trim(),
-                        userId: userTokenResponse.data,
-                        isAuthenticated: true
-                    });
-
-                    console.log('Успешная регистрация!');
-                    this.$router.push('/PersonalAccount'); 
                 }
             } 
         
             catch (error) {
                 console.error('Ошибка:', error.message);
-                console.log(error.message)
                 if (error.message == 'Request failed with status code 501'){
                     this.error = 'Пользователь с таким логином уже существует'; 
                 } else if (error.message == 'Request failed with status code 503'){
@@ -140,9 +166,11 @@ export default {
                 else {
                     this.error = 'Ошибка при отправке запроса';
                 }
+                return
             }
+            this.checkData();
 
-            this.closeOverlay()
+            
         }
     }
 }

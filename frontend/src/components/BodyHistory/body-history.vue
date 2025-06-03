@@ -47,14 +47,14 @@
         <span class="question-title">Добавьте фотографию:</span>
         <input id="fileInput" type="file" @change="handleFileUpload" accept="image/*" style="display: none">
         <label for="fileInput" class="custom-file-label">{{ selectedFile ? selectedFile.name : 'Загрузить чек' }}</label>
-        <button class="end-overlay-button" @click="addCheque">Добавить</button>
+        <button class="end-overlay-button" @click="addCheque()">Добавить</button>
       </div>
     </div>
   </div>
 
   <div class="page-container">
     <div class="history-title">
-        <span>История операций</span>
+        <span>История WIP</span>
     </div>
 
     <div class="myhistory">
@@ -68,10 +68,10 @@
           <span class="category">{{ getCategoryName(transaction.categoryId) }}</span>
           <span :class="{
             'value': true,
-            'income': transaction.typeOperation === 1,
-            'expense': transaction.typeOperation === 3
+            'income': transaction.typeOperation === 3,
+            'expense': transaction.typeOperation === 1
           }">
-          {{ transaction.typeOperation === 1 ? '+' : '-' }} {{ transaction.amount }} {{ currencySymbol }}
+          {{ transaction.typeOperation === 3 ? "+" : "-"}} {{ transaction.amount }} {{ currencySymbol }}
           </span>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default {
       try {
         const response = await axios.get(`http://26.255.57.122:5260/api/wallets/${this.walletId}`)
         this.NameWallet = response.data.name;
-        this.BalanceValue = response.data.balance;
+        this.BalanceValue = parseFloat(response.data.balance.toFixed(3));
         this.currencyId = response.data.currencieId;
         await this.loadCurrencySymbol();
       } catch (error) {
@@ -172,7 +172,7 @@ export default {
 
         const response = await axios.post(`http://26.255.57.122:5260/api/Transaction`, {
           walletId: this.walletId,
-          typeOperation: 1,
+          typeOperation: 3,
           amount: this.incomeAmount,
           categoryId: this.categoryId,
           currencieId: this.currencyId,
@@ -186,7 +186,7 @@ export default {
       }
       finally {
         this.showIncomeOverlay = false;
-        this.incomeAmount = 0;
+        this.incomeAmount = null;
         this.description = '';
         this.selectedCategory = '';
         await this.loadHistory();
@@ -206,7 +206,7 @@ export default {
 
         const response = await axios.post(`http://26.255.57.122:5260/api/Transaction`, {
           walletId: this.walletId,
-          typeOperation: 3,
+          typeOperation: 1,
           amount: this.expenseAmount,
           categoryId: this.categoryId,
           currencieId: this.currencyId,
@@ -220,7 +220,7 @@ export default {
       }
       finally {
         this.showExpenseOverlay = false;
-        this.expenseAmount = 0;
+        this.expenseAmount = null;
         this.description = '';
         this.selectedCategory = '';
         await this.loadHistory();
@@ -228,32 +228,43 @@ export default {
     },
 
     async addCheque() {
-      // const apiKey = '15c5acf8fd878311ecfc74e2727d0b5a'
 
-      // if (!this.selectedFile) {
-      //  return;
-      // }
+      const apiKey = '6d207e02198a847aa98d0a2a901485a5'
 
-      // try {
-      //   const formData = new FormData();
-      //   formData.append('key', apiKey);
-      //   formData.append('image', this.selectedFile);
-            
-      //   const response = await axios.post('https://api.imgbb.com/1/upload', formData, {headers: {'Content-Type': 'multipart/form-data'}});
+      if (!this.selectedFile) {
+        return;
+      }
+
+      try {
+        const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+        const targetUrl = "https://freeimage.host/api/1/upload";
+        const formData = new FormData();
+        formData.append('key', apiKey);
+        formData.append('source', this.selectedFile);
+        console.log('hui');    
+        const response = await axios.post(proxyUrl + targetUrl, formData, {
+          headers: {'Content-Type': 'multipart/form-data'},
+          withCredentials: false
+        });
+        console.log('hui2'); 
         
-      //   const imageUrl = response.data.data.url;
-      //   console.log('URL изображения: ', imageUrl);
+        const imageUrl = response.data.image.url;
+        console.log('URL изображения: ', imageUrl);
 
-      //   // await axios.post(`http://26.255.57.122:5260/api/attachment/CreateTransForAttachment/${this.walletId}`, {
-      //   //   filePath: base64Photo
-      //   // })
+        await axios.post(`http://26.255.57.122:5260/api/attachment/CreatеTransForAttachment/${this.walletId}`, {
+          filePath: imageUrl
+        },{
+          withCredentials: false
+        })
 
-      // } catch (error) {
-      //    console.log ('Ошибка загрузки чека:', error);
-      // }
+      } catch (error) {
+         console.log ('Ошибка загрузки чека:', error);
+      }
 
-      // this.showChequeOverlay = false;
-      // this.selectedFile = null;
+      this.showChequeOverlay = false;
+      this.selectedFile = null;
+      await this.loadHistory();
+      await this.loadWalletData();
     },
     
     handleFileUpload(event) {
@@ -265,15 +276,9 @@ export default {
       return new Date(dateString).toLocaleDateString('ru-RU', options);
     },
 
-    async getCategoryName(categoryId) {
-      const category = this.categories.find(cat => cat.id === categoryId);
+    getCategoryName(categoryId) {
+      const category = this.categories.find(c => c.id === categoryId);
       return category ? category.name : 'Неизвестно';
-
-      // async getCategoryName(categoryId) {
-      // const category = await axios.get(`http://26.255.57.122:5260/api/category/${categoryId}`);
-      // const categoryName = category.data.name
-      // console.log(category.data.name)
-      // return categoryName;
     },
   },
 

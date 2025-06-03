@@ -112,9 +112,9 @@ export default {
 
           transactions.forEach(transaction => {
             const amount = transaction.amount * rateRatio;
-            if (transaction.typeOperation == 1) {
+            if (transaction.typeOperation == 3) {
               totalIncome += amount;
-            } else if (transaction.typeOperation == 3) {
+            } else if (transaction.typeOperation == 1) {
               totalExpense += amount;
             }
           });
