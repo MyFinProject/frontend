@@ -73,7 +73,7 @@
   margin: auto;
   border-radius: 50px;
   width: 45px;
-  background-color: rgb(41, 58, 43);
+  background-color: rgb(212, 129, 65);
   height: 45px;
   z-index: 1;
   cursor: pointer;
@@ -82,7 +82,7 @@
 }
 
 .currency-button:hover {
-  background-color: rgb(46, 88, 95);
+  background-color: rgb(232, 134, 59);
   transform: translateY(-3px);
 }
 
@@ -172,7 +172,7 @@
   background-color: rgb(216, 216, 216);
 }
 .add-button {
-  background-color: rgb(41, 58, 43);
+  background-color: rgb(210, 137, 81);
   margin-top: 5%;
   color: white;
   padding: 10px 15px;
@@ -185,7 +185,7 @@
 }
 
 .add-button:hover, .save-button:hover {
-  background-color: rgb(64, 127, 138);
+  background-color: rgb(212, 129, 65);
 }
 
 
@@ -217,7 +217,7 @@
   max-width: 500px;
   margin: auto;
   padding: 20px;
-  background-color: #fefefe;
+  background-color: rgb(255, 255, 215);
   border: 1px solid #888;
   border-radius: 8px;
 }

@@ -66,6 +66,7 @@
   padding: 0 18px;
   cursor: pointer;
   transition: all 0.3s ease;
+  background-color: rgb(250, 138, 72);
 }
 
 
@@ -180,7 +181,7 @@
 }
 
 .background-wallet:hover, .add-wallet-button:hover, .more-wallets-button:hover{
-  background-color: rgb(222, 117, 57);
+  background-color: rgb(246, 147, 89);
   transform: translateY(-3px);
 }
 
@@ -350,7 +351,7 @@
 }
 
 .confirm-settings-button {
-  background-color: rgb(41, 58, 43);
+  background-color: rgb(228, 159, 90);
   margin-top: 15%;
   color: white;
   padding: 10px 15px;
@@ -363,5 +364,5 @@
 }
 
 .confirm-settings-button:hover {
-  background-color: rgb(64, 127, 138);
+  background-color: rgb(230, 156, 92);
 }

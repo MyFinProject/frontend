@@ -54,7 +54,7 @@
 
   <div class="page-container">
     <div class="history-title">
-        <span>История WIP</span>
+        <span>История</span>
     </div>
 
     <div class="myhistory">
@@ -154,6 +154,7 @@ export default {
       try {
         const response = await axios.get(`https://26.255.57.122:7208/api/category/GetAll`)
         this.categories = response.data
+        console.log(this.categories)
       } catch (error) {
         console.log("Ошибка загрузки категорий:", error)
       }
@@ -161,7 +162,8 @@ export default {
 
     async addIncome() {
       try {
-        const categoryResponse = await axios.get(`https://26.255.57.122:7208/api/category/GetIdByName/Undefined`)
+        this.categoryName = 'не выбрано'
+        const categoryResponse = await axios.get(`https://26.255.57.122:7208/api/category/GetIdByName/${this.categoryName}`)
         this.categoryId = categoryResponse.data
         this.incomeAmount = parseFloat(this.incomeAmount)
 
@@ -199,7 +201,6 @@ export default {
           alert('Сумма не может быть отрицательной');
           return;
         }
-
         const categoryResponse = await axios.get(`https://26.255.57.122:7208/api/category/GetIdByName/${this.selectedCategory}`)
         this.categoryId = categoryResponse.data
         this.expenseAmount = parseFloat(this.expenseAmount)
@@ -240,13 +241,11 @@ export default {
         const targetUrl = "https://freeimage.host/api/1/upload";
         const formData = new FormData();
         formData.append('key', apiKey);
-        formData.append('source', this.selectedFile);
-        console.log('hui');    
+        formData.append('source', this.selectedFile);  
         const response = await axios.post(proxyUrl + targetUrl, formData, {
           headers: {'Content-Type': 'multipart/form-data'},
           withCredentials: false
         });
-        console.log('hui2'); 
         
         const imageUrl = response.data.image.url;
         console.log('URL изображения: ', imageUrl);
@@ -258,7 +257,7 @@ export default {
         })
 
       } catch (error) {
-         console.log ('Ошибка загрузки чека:', error);
+        console.log ('Ошибка загрузки чека:', error);
       }
 
       this.showChequeOverlay = false;
@@ -277,6 +276,7 @@ export default {
     },
 
     getCategoryName(categoryId) {
+      
       const category = this.categories.find(c => c.id === categoryId);
       return category ? category.name : 'Неизвестно';
     },
