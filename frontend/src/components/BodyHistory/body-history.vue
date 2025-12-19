@@ -119,7 +119,7 @@ export default {
   methods: {
     async loadWalletData() {
       try {
-        const response = await axios.get(`http://26.255.57.122:5260/api/wallets/${this.walletId}`)
+        const response = await axios.get(`https://26.255.57.122:7208/api/wallets/${this.walletId}`)
         this.NameWallet = response.data.name;
         this.BalanceValue = parseFloat(response.data.balance.toFixed(3));
         this.currencyId = response.data.currencieId;
@@ -131,7 +131,7 @@ export default {
 
     async loadCurrencySymbol() {
       try {        
-        const response = await axios.get(`http://26.255.57.122:5260/api/Currency/GetById/${this.currencyId}`);
+        const response = await axios.get(`https://26.255.57.122:7208/api/Currency/GetById/${this.currencyId}`);
         
         const currencyCode = response.data.code;
         this.currencySymbol = this.currencySymbols[currencyCode] || currencyCode; 
@@ -152,7 +152,7 @@ export default {
 
     async loadCategories(){
       try {
-        const response = await axios.get(`http://26.255.57.122:5260/api/category/GetAll`)
+        const response = await axios.get(`https://26.255.57.122:7208/api/category/GetAll`)
         this.categories = response.data
       } catch (error) {
         console.log("Ошибка загрузки категорий:", error)
@@ -161,7 +161,7 @@ export default {
 
     async addIncome() {
       try {
-        const categoryResponse = await axios.get(`http://26.255.57.122:5260/api/category/GetIdByName/Undefined`)
+        const categoryResponse = await axios.get(`https://26.255.57.122:7208/api/category/GetIdByName/Undefined`)
         this.categoryId = categoryResponse.data
         this.incomeAmount = parseFloat(this.incomeAmount)
 
@@ -170,7 +170,7 @@ export default {
           return;
         }
 
-        const response = await axios.post(`http://26.255.57.122:5260/api/Transaction`, {
+        const response = await axios.post(`https://26.255.57.122:7208/api/Transaction`, {
           walletId: this.walletId,
           typeOperation: 3,
           amount: this.incomeAmount,
@@ -200,11 +200,11 @@ export default {
           return;
         }
 
-        const categoryResponse = await axios.get(`http://26.255.57.122:5260/api/category/GetIdByName/${this.selectedCategory}`)
+        const categoryResponse = await axios.get(`https://26.255.57.122:7208/api/category/GetIdByName/${this.selectedCategory}`)
         this.categoryId = categoryResponse.data
         this.expenseAmount = parseFloat(this.expenseAmount)
 
-        const response = await axios.post(`http://26.255.57.122:5260/api/Transaction`, {
+        const response = await axios.post(`https://26.255.57.122:7208/api/Transaction`, {
           walletId: this.walletId,
           typeOperation: 1,
           amount: this.expenseAmount,
@@ -251,7 +251,7 @@ export default {
         const imageUrl = response.data.image.url;
         console.log('URL изображения: ', imageUrl);
 
-        await axios.post(`http://26.255.57.122:5260/api/attachment/CreatеTransForAttachment/${this.walletId}`, {
+        await axios.post(`https://26.255.57.122:7208/api/attachment/CreatеTransForAttachment/${this.walletId}`, {
           filePath: imageUrl
         },{
           withCredentials: false

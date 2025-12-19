@@ -92,7 +92,7 @@ export default {
 
         async deleteUser() {
             try{
-                await axios.delete(`http://26.255.57.122:5260/api/controller/Delete/${this.email}`)
+                await axios.delete(`https://26.255.57.122:7208/api/controller/Delete/${this.email}`)
             }catch(error){
                 console.log(error.message)
             }
@@ -101,8 +101,8 @@ export default {
         async verifyData() {
             try{
                 const userStore = useUserStore();
-                await axios.post(`http://26.255.57.122:5260/api/controller/VerifyCode/${this.email}/${this.code}`)
-                const userTokenResponse = await axios.get(`http://26.255.57.122:5260/api/controller/GetId`);
+                await axios.post(`https://26.255.57.122:7208/api/controller/VerifyCode/${this.email}/${this.code}`)
+                const userTokenResponse = await axios.get(`https://26.255.57.122:7208/api/controller/GetId`);
                 userStore.login({
                         username: this.username.trim(),
                         email: this.email.trim(),
@@ -129,7 +129,7 @@ export default {
                 return;
             }
 
-            await axios.post(`http://26.255.57.122:5260/api/controller/SendCode/${this.email}`)
+            await axios.post(`https://26.255.57.122:7208/api/controller/SendCode/${this.email}`)
             this.openOverlay();
         },
 
@@ -147,7 +147,7 @@ export default {
                 }
                 
                 else {
-                    const response = await axios.post(`http://26.255.57.122:5260/api/controller/register`, {
+                    const response = await axios.post(`https://26.255.57.122:7208/api/controller/register`, {
                         username: this.username.trim(),
                         email: this.email.trim(),
                         password: this.password.trim()

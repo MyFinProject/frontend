@@ -9,8 +9,8 @@ import { fileURLToPath, URL } from 'node:url'
 export default defineConfig({
   server: {
     host: '0.0.0.0',
-    port: 5173,
-    strictPort: true
+    port: 7208,
+    strictPort: true,
   },
   plugins: [
     vue(),

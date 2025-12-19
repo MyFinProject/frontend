@@ -2,7 +2,7 @@
     width: 100%;
     padding: 15px;
     margin-bottom: 15px;
-    background-color: rgb(215, 222, 221);
+    background-color: rgb(225, 225, 158);
     border-radius: 10px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
@@ -28,7 +28,7 @@
 .operations-button,
 .end-overlay-button {
     color: rgb(215, 222, 221);
-    background-color: rgb(41, 58, 43);
+    background-color: rgb(212, 129, 65);
     font-size: 20px;
     font-weight: bold;
     text-align: center;
@@ -46,7 +46,7 @@
 .operations-button:hover,
 .end-overlay-button:hover {
     transform: translateY(-2px);
-    background-color: rgb(65, 94, 68);
+    background-color: rgb(199, 130, 56);
     color: #ffffff;
     cursor: pointer;
     box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
@@ -175,7 +175,7 @@ select.input-imcome-exp option {
     flex-grow: 1;
     width: 100%;
     margin: 0 auto;
-    background-color: rgb(215, 222, 221);
+    background-color: rgb(225, 225, 158);
     border-radius: 10px;
     padding: 15px;
     margin-top: 15px;
@@ -183,7 +183,7 @@ select.input-imcome-exp option {
 }
 .myhistory-element{
     width: 100%;
-    background-color: rgba(187, 187, 187, 0.5);
+    background-color: rgb(226, 207, 137);
     border-radius: 10px;
     margin-top: 10px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);

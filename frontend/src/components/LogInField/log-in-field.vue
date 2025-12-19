@@ -38,12 +38,12 @@ export default {
             }
             else {
                 try {
-                    const response = await axios.post(`http://26.255.57.122:5260/api/controller/login`, {    
+                    const response = await axios.post(`https://26.255.57.122:7208/api/controller/login`, {    
                         username: this.username.trim(),
                         password: this.password.trim()
                     });
                     
-                    const userTokenResponse = (await axios.get(`http://26.255.57.122:5260/api/controller/GetId`));
+                    const userTokenResponse = (await axios.get(`https://26.255.57.122:7208/api/controller/GetId`));
                     this.email = response.data.email;
                     
                     userStore.login ({

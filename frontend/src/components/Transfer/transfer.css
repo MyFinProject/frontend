@@ -2,7 +2,7 @@
 .transfer {
   width: 100%;
   height: auto;
-  background-color: rgb(215, 222, 221);
+  background-color: rgb(225, 225, 158);
   border-radius: 10px;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
 }
@@ -138,11 +138,12 @@
   margin: 10px auto;
   font-size: 18px;
   transition: all 0.3s ease;
+  background-color: rgb(226, 207, 137);
 }
 
 .button-add:hover {
   transform: translateY(-3px);
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(222, 201, 134);
 }
 
 .save-button,

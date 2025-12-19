@@ -76,7 +76,7 @@ export default {
 
     async fetchTransaction(walletId) {
       try {
-        const response = await axios.get(`http://26.255.57.122:5260/api/Transaction/GetAllByWalletId/${walletId}`);
+        const response = await axios.get(`https://26.255.57.122:7208/api/Transaction/GetAllByWalletId/${walletId}`);
         return response.data;
       } catch (error) {
         console.log('Ошибка загрузки транзакций для кошелька: ', error);
@@ -90,7 +90,7 @@ export default {
         const walletStore = useWalletStore()
 
         if (this.dollarRate === 1) {
-          const responseDollar = await axios.get(`http://26.255.57.122:5260/api/Currency/GetRateByCode/${'USD'}`);
+          const responseDollar = await axios.get(`https://26.255.57.122:7208/api/Currency/GetRateByCode/${'USD'}`);
           this.dollarRate = responseDollar.data;
         }
 
@@ -105,7 +105,7 @@ export default {
         const walletPromises = this.wallets.map(async wallet => {
           const [transactions, currency] = await Promise.all([
             this.fetchTransaction(wallet.walletId),
-            axios.get(`http://26.255.57.122:5260/api/Currency/GetById/${wallet.currencieId}`)
+            axios.get(`https://26.255.57.122:7208/api/Currency/GetById/${wallet.currencieId}`)
           ]);
 
           const rateRatio = currency.data.rate / this.dollarRate;

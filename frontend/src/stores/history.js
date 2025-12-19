@@ -8,7 +8,7 @@ export const useHistoryStore = defineStore('history', {
   actions: {
     async fetchHistory(walletId){
         try {
-            const response = await axios.get(`http://26.255.57.122:5260/api/Transaction/GetAllByWalletId/${walletId}`)
+            const response = await axios.get(`https://26.255.57.122:7208/api/Transaction/GetAllByWalletId/${walletId}`)
             this.history = response.data.sort((a, b) => 
               new Date(b.date) - new Date(a.date)
             );

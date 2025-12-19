@@ -173,7 +173,7 @@ export default {
             this.selectedCurrency = currency;
         },
         async changeWallet(wallet){
-            const response = await axios.put(`http://26.255.57.122:5260/api/wallets/UpdateName/${wallet.walletId}/${this.newWalletName}`);
+            const response = await axios.put(`https://26.255.57.122:7208/api/wallets/UpdateName/${wallet.walletId}/${this.newWalletName}`);
            
             const userStore = useUserStore()
             const walletStore = useWalletStore()
@@ -188,7 +188,7 @@ export default {
             this.openOverlayAll();
         },
         async deleteWallet(wallet){
-            const response = await axios.delete(`http://26.255.57.122:5260/api/wallets/DeleteWallet/${wallet.walletId}`);
+            const response = await axios.delete(`https://26.255.57.122:7208/api/wallets/DeleteWallet/${wallet.walletId}`);
 
             const userStore = useUserStore()
             const walletStore = useWalletStore()
@@ -216,7 +216,7 @@ export default {
             let currencyId = '';
             
             try {
-                const currencyResponse = await axios.get(`http://26.255.57.122:5260/api/Currency/GetByCode/${this.selectedCurrency.code}`);
+                const currencyResponse = await axios.get(`https://26.255.57.122:7208/api/Currency/GetByCode/${this.selectedCurrency.code}`);
                 currencyId = currencyResponse.data;
             }
 

@@ -170,8 +170,8 @@ export default {
       }
 
       const [currencyResponse, categoryResponse] = await Promise.all([
-        axios.get(`http://26.255.57.122:5260/api/Currency/GetByCode/${this.selectedCurrency.code}`),
-        axios.get(`http://26.255.57.122:5260/api/category/GetIdByName/${this.selectedCategory.name}`)
+        axios.get(`https://26.255.57.122:7208/api/Currency/GetByCode/${this.selectedCurrency.code}`),
+        axios.get(`https://26.255.57.122:7208/api/category/GetIdByName/${this.selectedCategory.name}`)
       ]);
 
       const budgetData = {
@@ -196,7 +196,7 @@ export default {
 
     async loadCategories(){
       try {
-        const response = await axios.get(`http://26.255.57.122:5260/api/category/GetAll`)
+        const response = await axios.get(`https://26.255.57.122:7208/api/category/GetAll`)
         this.categories = response.data
       } catch (error) {
         console.log("Ошибка загрузки категорий:", error)

@@ -22,7 +22,7 @@ export default {
             
             try {
                 const userStore = useUserStore();
-                const response = await axios.post(`http://26.255.57.122:5260/api/controller/Logout`);
+                const response = await axios.post(`https://26.255.57.122:7208/api/controller/Logout`);
                 userStore.logout();
                 this.$router.push('/'); 
             } 
